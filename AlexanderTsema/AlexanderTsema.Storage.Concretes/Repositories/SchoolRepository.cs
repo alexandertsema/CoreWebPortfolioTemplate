@@ -16,7 +16,8 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
         public void SetStorageContext(IStorageContext storageContext)
         {
             this._storageContext = storageContext as StorageContext;
-            this._dbSet = this._storageContext.Set<School>();
+            var context = this._storageContext;
+            if (context != null) this._dbSet = context.Set<School>();
         }
 
         public IEnumerable<School> All()

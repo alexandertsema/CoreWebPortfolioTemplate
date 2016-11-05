@@ -9,11 +9,18 @@ namespace AlexanderTsema.WebServices.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
+
+        public ValuesController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        {
+            this._storage = storage;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<AlexanderTsema.Storage.Models.Models.School> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().All();
         }
 
         // GET api/values/5
