@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlexanderTsema.Data.Models
+namespace AlexanderTsema.Storage.Models.Models
 {
     public class Course
     {

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace AlexanderTsema.Data.Models
+namespace AlexanderTsema.Storage.Models.Models
 {
     public class School
     {
@@ -15,6 +13,6 @@ namespace AlexanderTsema.Data.Models
         public DateTime EndDate { get; set; }
         public String GraduationWork { get; set; }
         public Double Gpa { get; set; }
-        public Course Courses { get; set; }
+        public IEnumerable<Course> Courses { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Reflection;
 
-namespace AlexanderTsema.Data.Models
+namespace AlexanderTsema.Storage.Models.Models
 {
     public class PortfolioItemType
     {
