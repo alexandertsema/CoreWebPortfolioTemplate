@@ -8,6 +8,8 @@ namespace AlexanderTsema.Storage.Models.Models
         public Int16 Id { get; set; } 
         public String SummaryTitle { get; set; } 
         public String EducationTitle { get; set; } 
-        public IEnumerable<School> Schools { get; set; }
+        public String WorkTitle { get; set; } 
+        public String TestimonialsTitle { get; set; } 
+        public String ContactsTitle { get; set; } 
     }
 }
