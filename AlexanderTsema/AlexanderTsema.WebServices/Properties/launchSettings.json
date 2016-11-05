@@ -11,6 +11,18 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+<<<<<<< HEAD
+      "launchUrl": "api/values",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "AlexanderTsema.WebServices": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000/api/values",
+=======
+>>>>>>> 85328f1fae64e8fa932cb91b15de1f7921ecf0a7
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
