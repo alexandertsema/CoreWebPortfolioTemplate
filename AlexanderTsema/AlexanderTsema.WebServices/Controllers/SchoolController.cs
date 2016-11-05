@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace AlexanderTsema.WebServices.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class SchoolController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
 
-        public ValuesController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        public SchoolController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
         {
             this._storage = storage;
         }

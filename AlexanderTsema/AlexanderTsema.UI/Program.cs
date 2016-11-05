@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AlexanderTsema.UI
+namespace AlexanderTsema.UI.Client
 {
     public class Program
     {
