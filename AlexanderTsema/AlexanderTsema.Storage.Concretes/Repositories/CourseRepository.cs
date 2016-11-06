@@ -8,34 +8,35 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AlexanderTsema.Storage.Concretes.Repositories
 {
-    public class SchoolRepository : ISchoolRepository
+    public class CourseRepository : ICourseRepository
     {
         private StorageContext _storageContext;
-        private DbSet<School> _schoolDbSet;
+        private DbSet<Course> _courseDbSet;
 
         public void SetStorageContext(IStorageContext storageContext)
         {
             this._storageContext = storageContext as StorageContext;
             var context = this._storageContext;
-            if (context != null) this._schoolDbSet = context.Set<School>();
+            if (context != null) this._courseDbSet = context.Set<Course>();
         }
 
-        public IEnumerable<School> All()
+        public IEnumerable<Course> All()
         {
-            return this._schoolDbSet.OrderBy(i => i.Id);
+            return this._courseDbSet.OrderBy(i => i.Id);
         }
 
-        public School Single(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Create(School school)
+        public Course Single(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(School school)
+        public void Create(Course course)
+        {
+            this._courseDbSet.Add(course);
+            this._courseDbSet.Save();
+        }
+
+        public void Update(Course course)
         {
             throw new System.NotImplementedException();
         }

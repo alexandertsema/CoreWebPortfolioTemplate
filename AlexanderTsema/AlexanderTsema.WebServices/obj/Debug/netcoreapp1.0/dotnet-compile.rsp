@@ -187,4 +187,5 @@
 --resource:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.WebServices\obj\Debug\netcoreapp1.0\AlexanderTsema.WebServicesdotnet-compile.deps.json",AlexanderTsema.WebServices.deps.json
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.WebServices\Program.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.WebServices\Startup.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.WebServices\Controllers\CourseController.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.WebServices\Controllers\SchoolController.cs

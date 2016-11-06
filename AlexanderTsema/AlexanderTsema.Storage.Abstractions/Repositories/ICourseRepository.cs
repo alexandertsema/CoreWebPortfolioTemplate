@@ -4,5 +4,5 @@ using AlexanderTsema.Storage.Models.Models;
 
 namespace AlexanderTsema.Storage.Abstractions.Repositories
 {
-    public interface ISchoolRepository : IRepository, ICrud<School> { }
+    public interface ICourseRepository : IRepository, ICrud<Course> { }
 }

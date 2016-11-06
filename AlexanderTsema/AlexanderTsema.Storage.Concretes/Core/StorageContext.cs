@@ -6,22 +6,24 @@ namespace AlexanderTsema.Storage.Concretes.Core
 {
     public class StorageContext : DbContext, IStorageContext
     {
-        private string connectionString;
+        private readonly string _connectionString;
 
         public StorageContext(string connectionString)
         {
-            this.connectionString = connectionString;
+            this._connectionString = connectionString;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(this.connectionString);
+            optionsBuilder.UseSqlServer(this._connectionString);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<School>();
+            modelBuilder.Entity<Course>();
         }
     }
 }
