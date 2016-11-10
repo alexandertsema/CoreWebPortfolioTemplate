@@ -10,8 +10,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
 
         public Storage()
         {
-            //this.StorageContext = new StorageContext("Data Source=SQL5030.myASP.NET;Initial Catalog=DB_9F4FCE_AlexanderTsema;User Id=DB_9F4FCE_AlexanderTsema_admin;Password=13june13;");
-            this.StorageContext = new StorageContext("Data Source=DESKTOP-47CKMKT\\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;");
+            this.StorageContext = new StorageContext(@"Data Source=DESKTOP-47CKMKT\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;");
         }
 
         public T GetRepository<T>() where T : IRepository

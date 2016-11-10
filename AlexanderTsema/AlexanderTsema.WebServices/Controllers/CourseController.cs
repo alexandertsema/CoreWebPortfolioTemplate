@@ -37,6 +37,7 @@ namespace AlexanderTsema.WebServices.Controllers
         public void Post(AlexanderTsema.Storage.Models.Models.Course course)
         {
             this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Create(course);
+            this._storage.Save();
         }
 
         // PUT api/values/5

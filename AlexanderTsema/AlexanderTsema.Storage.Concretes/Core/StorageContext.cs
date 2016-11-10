@@ -1,6 +1,7 @@
 ﻿using AlexanderTsema.Storage.Abstractions.Core;
 using AlexanderTsema.Storage.Models.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace AlexanderTsema.Storage.Concretes.Core
 {
@@ -24,6 +25,16 @@ namespace AlexanderTsema.Storage.Concretes.Core
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<School>();
             modelBuilder.Entity<Course>();
+        }
+    }
+    /// <summary>
+    /// Hot fix to allow migrations
+    /// </summary>
+    public class TemporaryDbContextFactory : IDbContextFactory<StorageContext>
+    {
+        public StorageContext Create(DbContextFactoryOptions options)
+        {
+            return new StorageContext(@"Data Source=DESKTOP-47CKMKT\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;");
         }
     }
 }

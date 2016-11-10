@@ -33,7 +33,6 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
         public void Create(Course course)
         {
             this._courseDbSet.Add(course);
-            this._courseDbSet.Save();
         }
 
         public void Update(Course course)
