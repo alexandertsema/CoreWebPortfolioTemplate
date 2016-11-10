@@ -1,4 +1,6 @@
-﻿namespace AlexanderTsema.Storage.Abstractions.Core
+﻿using System.Collections.Generic;
+
+namespace AlexanderTsema.Storage.Abstractions.Core
 {
     public interface IRepository
     {

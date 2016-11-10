@@ -1,17 +1,50 @@
-{
-  "version": "1.0.0-*",
+//{
+//  "version": "1.0.0-*",
 
+//  "dependencies": {
+//    "AlexanderTsema.Storage.Abstractions": "1.0.0-*",
+//    "Microsoft.EntityFrameworkCore": "1.0.1",
+//    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
+//    "NETStandard.Library": "1.6.0",
+//    "System.Linq.Queryable": "4.0.1"
+//  },
+//  "tools": {
+//    "Microsoft.EntityFrameworkCore.Tools": {
+//      "version": "1.0.0-preview2-final",
+//      "type": "build"
+//    }
+//  },
+//  "frameworks": {
+//    "netstandard1.6": {
+//      "imports": "dnxcore50"
+//    }
+//  }
+//}
+
+/// <summary>
+/// Hot fix to allow migrations.
+/// Turn .NET Core class library into .NET Core Application
+/// </summary>
+{
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+  "frameworks": {
+    "netcoreapp1.0": {}
+  },
   "dependencies": {
     "AlexanderTsema.Storage.Abstractions": "1.0.0-*",
-    "Microsoft.EntityFrameworkCore": "1.0.1",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
-    "NETStandard.Library": "1.6.0",
-    "System.Linq.Queryable": "4.0.1"
+    "Microsoft.NETCore.App": {
+      "version": "1.0.0",
+      "type": "platform"
+    },
+    "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
   },
-
-  "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools": {
+      "version": "1.0.0-preview2-final"
     }
   }
 }

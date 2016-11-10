@@ -11,18 +11,38 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
     public class SchoolRepository : ISchoolRepository
     {
         private StorageContext _storageContext;
-        private DbSet<School> _dbSet;
+        private DbSet<School> _schoolDbSet;
 
         public void SetStorageContext(IStorageContext storageContext)
         {
             this._storageContext = storageContext as StorageContext;
             var context = this._storageContext;
-            if (context != null) this._dbSet = context.Set<School>();
+            if (context != null) this._schoolDbSet = context.Set<School>();
         }
 
         public IEnumerable<School> All()
         {
-            return this._dbSet.OrderBy(i => i.Id);
+            return this._schoolDbSet.OrderBy(i => i.Id);
+        }
+
+        public School Single(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Create(School school)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(School school)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
