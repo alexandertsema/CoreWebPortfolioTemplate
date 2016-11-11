@@ -8,9 +8,10 @@ using AlexanderTsema.Storage.Concretes.Core;
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20161111012148_CourseCanHaveOnlyOneSchool_IcollectionAdded")]
+    partial class CourseCanHaveOnlyOneSchool_IcollectionAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

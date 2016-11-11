@@ -27,22 +27,34 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public Course Single(int id)
         {
-            throw new System.NotImplementedException();
+            return this._courseDbSet.SingleOrDefault(x => x.Id == id);
         }
 
         public void Create(Course course)
         {
             this._courseDbSet.Add(course);
+            this._storageContext.SaveChanges();
         }
 
         public void Update(Course course)
         {
-            throw new System.NotImplementedException();
+            var dbEntry = this._courseDbSet.SingleOrDefault(x => x.Id == course.Id);
+            if (dbEntry != null)
+            {
+                dbEntry.Name = course.Name;
+                dbEntry.School = course.School;
+            }
+            this._storageContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var dbEntry = this._courseDbSet.SingleOrDefault(x => x.Id == id);
+            if (dbEntry != null)
+            {
+                this._courseDbSet.Remove(dbEntry);
+                this._storageContext.SaveChanges();
+            }
         }
     }
 }

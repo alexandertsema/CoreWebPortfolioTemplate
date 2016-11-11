@@ -1,5 +1,5 @@
---temp-output:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\obj\Debug\netcoreapp1.0\
---out:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\bin\Debug\netcoreapp1.0\AlexanderTsema.UI.dll
+--temp-output:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\bin\Debug\netcoreapp1.0\AlexanderTsema.UI.Client.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -8,7 +8,7 @@
 --suppress-warning:CS1705
 --optimize:False
 --emit-entry-point:True
---output-name:AlexanderTsema.UI
+--output-name:AlexanderTsema.UI.Client
 --file-version:1.0.0.0
 --version:1.0.0.0
 --informational-version:1.0.0
@@ -198,7 +198,7 @@
 --reference:C:\Users\Alexander\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\obj\Debug\netcoreapp1.0\AlexanderTsema.UIdotnet-compile.deps.json",AlexanderTsema.UI.deps.json
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Program.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Startup.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Controllers\HomeController.cs
+--resource:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\obj\Debug\netcoreapp1.0\AlexanderTsema.UI.Clientdotnet-compile.deps.json",AlexanderTsema.UI.Client.deps.json
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Program.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Startup.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Controllers\HomeController.cs

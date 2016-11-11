@@ -7,8 +7,8 @@
 -debug:full
 -nostdlib
 -nologo
-"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\bin\Debug\netcoreapp1.0\AlexanderTsema.UI.dll"
+"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\bin\Debug\netcoreapp1.0\AlexanderTsema.UI.Client.dll"
 -r:"C:\Users\Alexander\.nuget\packages\BundlerMinifier.Core\2.2.301\lib\netcoreapp1.0\dotnet-bundle.dll"
 -r:"C:\Users\Alexander\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\Alexander\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.2\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
@@ -194,7 +194,7 @@
 -r:"C:\Users\Alexander\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\Alexander\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Alexander\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll"
--resource:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\obj\Debug\netcoreapp1.0\AlexanderTsema.UIdotnet-compile.deps.json",AlexanderTsema.UI.deps.json
-"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Program.cs"
-"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Startup.cs"
-"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI\Controllers\HomeController.cs"
+-resource:"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\obj\Debug\netcoreapp1.0\AlexanderTsema.UI.Clientdotnet-compile.deps.json",AlexanderTsema.UI.Client.deps.json
+"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Program.cs"
+"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Startup.cs"
+"C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.UI.Client\Controllers\HomeController.cs"
