@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace AlexanderTsema.Storage.Concretes.Core
 {
@@ -32,7 +34,8 @@ namespace AlexanderTsema.Storage.Concretes.Core
 
         public T Single(int id)
         {
-            return this.DbSet.SingleOrDefault(x => (short)x.GetType().GetProperty("Id").GetValue(x) == id);
+            var val = this.DbSet.Where(x => (short)x.GetType().GetProperty("Id").GetValue(x) == id).IncludeAllChildren().SingleOrDefault();
+            return val;
         }
 
         public void Create(T obj)
@@ -65,6 +68,25 @@ namespace AlexanderTsema.Storage.Concretes.Core
                 this.DbSet.Remove(dbEntry);
                 this.StorageContext.SaveChanges();
             }
+        }
+    }
+    public static class Extension
+    {
+        // This is the extension method.
+        // The first parameter takes the "this" modifier
+        // and specifies the type for which the method is defined.
+        public static IEnumerable<TEntity> IncludeAllChildren<TEntity>(this IQueryable<TEntity> source) where TEntity : class
+        {
+            IEnumerable<TEntity> query = null;
+            foreach (var item in source)
+            {
+                foreach (var propperty in item.GetType().GetProperties())
+                {
+                    var val = propperty.PropertyType;
+                    query = source.Include(x => x.GetType().GetProperty(val.Name).GetValue(x));
+                }
+            }
+            return query;
         }
     }
 }

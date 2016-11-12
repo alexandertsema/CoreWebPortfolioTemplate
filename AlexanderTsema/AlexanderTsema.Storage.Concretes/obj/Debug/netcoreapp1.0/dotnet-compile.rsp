@@ -151,4 +151,6 @@ C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplat
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\StorageContextModelSnapshot.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Properties\AssemblyInfo.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\CourseRepository.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\PortfolioItemRepository.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\SchoolRepository.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\SkillRepository.cs
