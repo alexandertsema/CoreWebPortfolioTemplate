@@ -1,7 +1,7 @@
-﻿namespace AlexanderTsema.Storage.Abstractions.Repositories
+﻿using AlexanderTsema.Storage.Abstractions.Core;
+using AlexanderTsema.Storage.Entities.Models;
+
+namespace AlexanderTsema.Storage.Abstractions.Repositories
 {
-    public interface IPortfolioItemRepository
-    {
-        
-    }
+    public interface IPortfolioItemRepository : IRepository, IBaseRepository<PortfolioItem> { }
 }
