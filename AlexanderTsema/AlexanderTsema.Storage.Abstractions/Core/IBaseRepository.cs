@@ -2,7 +2,7 @@
 
 namespace AlexanderTsema.Storage.Abstractions.Core
 {
-    public interface ICrud<T>
+    public interface IBaseRepository<T>
     {
         IEnumerable<T> All();
         T Single(int id);

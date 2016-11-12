@@ -8,8 +8,8 @@ using AlexanderTsema.Storage.Concretes.Core;
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    [Migration("20161110035139_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20161111195347_LazyLoadAdded")]
+    partial class LazyLoadAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,7 +59,7 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Models.Course", b =>
                 {
-                    b.HasOne("AlexanderTsema.Storage.Entities.Models.School")
+                    b.HasOne("AlexanderTsema.Storage.Entities.Models.School", "School")
                         .WithMany("Courses")
                         .HasForeignKey("SchoolId");
                 });

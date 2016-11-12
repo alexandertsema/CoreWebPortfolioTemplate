@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>87104dfc-6047-4594-82f4-9c0c6ba7aeb7</ProjectGuid>
-    <RootNamespace>AlexanderTsema.Storage.Models</RootNamespace>
+    <ProjectGuid>8382c54b-5cb6-418b-932b-f25c70bf0ca5</ProjectGuid>
+    <RootNamespace>AlexanderTsema.Storage.Entities</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

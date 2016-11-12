@@ -10,7 +10,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
 
         public Storage()
         {
-            this.StorageContext = new StorageContext(@"Data Source=DESKTOP-47CKMKT\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;");
+            this.StorageContext = new StorageContext(@"Data Source=DESKTOP-47CKMKT\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;"); //todo: move to appsettings
         }
 
         public T GetRepository<T>() where T : IRepository

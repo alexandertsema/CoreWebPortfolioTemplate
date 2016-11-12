@@ -135,8 +135,9 @@
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.dll
---reference:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Models.dll
+--reference:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.dll
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Program.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Core\BaseRepository.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Core\Storage.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Core\StorageContext.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161110035139_InitialMigration.cs
@@ -145,8 +146,9 @@ C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplat
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161111000202_CourseCanHaveOnlyOneSchool.Designer.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161111012148_CourseCanHaveOnlyOneSchool_IcollectionAdded.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161111012148_CourseCanHaveOnlyOneSchool_IcollectionAdded.Designer.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161111195347_LazyLoadAdded.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\20161111195347_LazyLoadAdded.Designer.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Migrations\StorageContextModelSnapshot.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Properties\AssemblyInfo.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\BaseRepository.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\CourseRepository.cs
 C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Concretes\Repositories\SchoolRepository.cs

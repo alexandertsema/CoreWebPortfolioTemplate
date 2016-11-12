@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AlexanderTsema.Storage.Models.Models
+namespace AlexanderTsema.Storage.Entities.Models
 {
     public class PortfolioItemType
     {

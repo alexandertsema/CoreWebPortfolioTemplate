@@ -2981,7 +2981,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
-          "AlexanderTsema.Storage.Models": "1.0.0",
+          "AlexanderTsema.Storage.Entities": "1.0.0",
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
@@ -2991,17 +2991,17 @@
           "netstandard1.6/AlexanderTsema.Storage.Abstractions.dll": {}
         }
       },
-      "AlexanderTsema.Storage.Models/1.0.0": {
+      "AlexanderTsema.Storage.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
-          "netstandard1.6/AlexanderTsema.Storage.Models.dll": {}
+          "netstandard1.6/AlexanderTsema.Storage.Entities.dll": {}
         },
         "runtime": {
-          "netstandard1.6/AlexanderTsema.Storage.Models.dll": {}
+          "netstandard1.6/AlexanderTsema.Storage.Entities.dll": {}
         }
       }
     }
@@ -8506,10 +8506,10 @@
       "path": "../AlexanderTsema.Storage.Abstractions/project.json",
       "msbuildProject": "../AlexanderTsema.Storage.Abstractions/AlexanderTsema.Storage.Abstractions.xproj"
     },
-    "AlexanderTsema.Storage.Models/1.0.0": {
+    "AlexanderTsema.Storage.Entities/1.0.0": {
       "type": "project",
-      "path": "../AlexanderTsema.Storage.Models/project.json",
-      "msbuildProject": "../AlexanderTsema.Storage.Models/AlexanderTsema.Storage.Models.xproj"
+      "path": "../AlexanderTsema.Storage.Entities/project.json",
+      "msbuildProject": "../AlexanderTsema.Storage.Entities/AlexanderTsema.Storage.Entities.xproj"
     }
   },
   "projectFileDependencyGroups": {

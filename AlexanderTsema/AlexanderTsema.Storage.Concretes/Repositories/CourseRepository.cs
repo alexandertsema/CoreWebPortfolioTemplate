@@ -3,7 +3,7 @@ using System.Linq;
 using AlexanderTsema.Storage.Abstractions.Core;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AlexanderTsema.Storage.Concretes.Core;
-using AlexanderTsema.Storage.Models.Models;
+using AlexanderTsema.Storage.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlexanderTsema.Storage.Concretes.Repositories
@@ -22,12 +22,12 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public IEnumerable<Course> All()
         {
-            return this._courseDbSet.OrderBy(i => i.Id);
+            return this._courseDbSet.Include(x=>x.School).OrderBy(i => i.Id);
         }
 
         public Course Single(int id)
         {
-            return this._courseDbSet.SingleOrDefault(x => x.Id == id);
+            return this._courseDbSet.Where(x => x.Id == id).Include(x => x.School).SingleOrDefault();
         }
 
         public void Create(Course course)

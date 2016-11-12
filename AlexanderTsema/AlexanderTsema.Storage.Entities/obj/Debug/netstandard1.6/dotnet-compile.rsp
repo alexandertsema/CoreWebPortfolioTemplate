@@ -1,5 +1,5 @@
---temp-output:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\obj\Debug\netstandard1.6\
---out:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Models.dll
+--temp-output:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\obj\Debug\netstandard1.6\
+--out:C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.dll
 --define:DEBUG
 --define:TRACE
 --define:NETSTANDARD1_6
@@ -7,7 +7,7 @@
 --suppress-warning:CS1702
 --suppress-warning:CS1705
 --optimize:False
---output-name:AlexanderTsema.Storage.Models
+--output-name:AlexanderTsema.Storage.Entities
 --file-version:1.0.0.0
 --version:1.0.0.0
 --informational-version:1.0.0
@@ -55,13 +55,13 @@
 --reference:C:\Users\Alexander\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Alexander\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\Content.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\Course.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\PortfolioItem.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\PortfolioItemType.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\Reference.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\ReferenceAuthor.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\School.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\Skill.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Models\Summary.cs
-C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Models\Properties\AssemblyInfo.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\Content.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\Course.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\PortfolioItem.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\PortfolioItemType.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\Reference.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\ReferenceAuthor.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\School.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\Skill.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Models\Summary.cs
+C:\Users\Alexander\Documents\Visual Studio 2015\Projects\CoreWebPortfolioTemplate\AlexanderTsema\AlexanderTsema.Storage.Entities\Properties\AssemblyInfo.cs

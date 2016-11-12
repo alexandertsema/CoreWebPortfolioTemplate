@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexanderTsema.WebServices", "AlexanderTsema.WebServices\AlexanderTsema.WebServices.xproj", "{C934227E-D3DD-49E0-9FC4-A8CD0833483B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexanderTsema.Storage.Models", "AlexanderTsema.Storage.Models\AlexanderTsema.Storage.Models.xproj", "{87104DFC-6047-4594-82F4-9C0C6BA7AEB7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49BBB527-E1F4-4CD0-8FA3-18E7B25DF224}"
@@ -22,6 +20,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexanderTsema.UI.Admin", "
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexanderTsema.UI.Client", "AlexanderTsema.UI.Client\AlexanderTsema.UI.Client.xproj", "{B8C3E3C7-C565-4EBF-9CA0-B790CE874516}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexanderTsema.Storage.Entities", "AlexanderTsema.Storage.Entities\AlexanderTsema.Storage.Entities.xproj", "{8382C54B-5CB6-418B-932B-F25C70BF0CA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +32,6 @@ Global
 		{C934227E-D3DD-49E0-9FC4-A8CD0833483B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C934227E-D3DD-49E0-9FC4-A8CD0833483B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C934227E-D3DD-49E0-9FC4-A8CD0833483B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87104DFC-6047-4594-82F4-9C0C6BA7AEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87104DFC-6047-4594-82F4-9C0C6BA7AEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87104DFC-6047-4594-82F4-9C0C6BA7AEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87104DFC-6047-4594-82F4-9C0C6BA7AEB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7122B3B4-2C89-41EA-AF9D-E8017F43A061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7122B3B4-2C89-41EA-AF9D-E8017F43A061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7122B3B4-2C89-41EA-AF9D-E8017F43A061}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,16 +48,20 @@ Global
 		{B8C3E3C7-C565-4EBF-9CA0-B790CE874516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8C3E3C7-C565-4EBF-9CA0-B790CE874516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8C3E3C7-C565-4EBF-9CA0-B790CE874516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8382C54B-5CB6-418B-932B-F25C70BF0CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8382C54B-5CB6-418B-932B-F25C70BF0CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8382C54B-5CB6-418B-932B-F25C70BF0CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8382C54B-5CB6-418B-932B-F25C70BF0CA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C934227E-D3DD-49E0-9FC4-A8CD0833483B} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
-		{87104DFC-6047-4594-82F4-9C0C6BA7AEB7} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
 		{7122B3B4-2C89-41EA-AF9D-E8017F43A061} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
 		{74EE9DBA-9E25-4308-A9E4-A415D7FA5D56} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
 		{6B230561-6597-45FF-B735-E127E2462474} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
 		{B8C3E3C7-C565-4EBF-9CA0-B790CE874516} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
+		{8382C54B-5CB6-418B-932B-F25C70BF0CA5} = {88F72A3A-D3AC-4DF2-8BE9-0C7071B6CD96}
 	EndGlobalSection
 EndGlobal

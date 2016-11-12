@@ -1068,17 +1068,17 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "AlexanderTsema.Storage.Models/1.0.0": {
+      "AlexanderTsema.Storage.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0"
         },
         "compile": {
-          "netstandard1.6/AlexanderTsema.Storage.Models.dll": {}
+          "netstandard1.6/AlexanderTsema.Storage.Entities.dll": {}
         },
         "runtime": {
-          "netstandard1.6/AlexanderTsema.Storage.Models.dll": {}
+          "netstandard1.6/AlexanderTsema.Storage.Entities.dll": {}
         }
       }
     }
@@ -4027,15 +4027,15 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "AlexanderTsema.Storage.Models/1.0.0": {
+    "AlexanderTsema.Storage.Entities/1.0.0": {
       "type": "project",
-      "path": "../AlexanderTsema.Storage.Models/project.json",
-      "msbuildProject": "../AlexanderTsema.Storage.Models/AlexanderTsema.Storage.Models.xproj"
+      "path": "../AlexanderTsema.Storage.Entities/project.json",
+      "msbuildProject": "../AlexanderTsema.Storage.Entities/AlexanderTsema.Storage.Entities.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "AlexanderTsema.Storage.Models >= 1.0.0-*",
+      "AlexanderTsema.Storage.Entities >= 1.0.0-*",
       "NETStandard.Library >= 1.6.0"
     ],
     ".NETStandard,Version=v1.6": []

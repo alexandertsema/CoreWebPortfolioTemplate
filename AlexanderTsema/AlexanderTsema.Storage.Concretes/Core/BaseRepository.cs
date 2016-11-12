@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AlexanderTsema.Storage.Abstractions.Core;
 using AlexanderTsema.Storage.Concretes.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
-namespace AlexanderTsema.Storage.Concretes.Repositories
+namespace AlexanderTsema.Storage.Concretes.Core
 {
+    /// <summary>
+    /// waiting for Lazy Load to be added to Core
+    /// </summary>
+    /// <typeparam name="T">Entity</typeparam>
     public abstract class BaseRepository<T> where T : class
     {
         protected StorageContext StorageContext;
@@ -26,7 +32,7 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public T Single(int id)
         {
-            return this.DbSet.SingleOrDefault(x => (short) x.GetType().GetProperty("Id").GetValue(x) == id);
+            return this.DbSet.SingleOrDefault(x => (short)x.GetType().GetProperty("Id").GetValue(x) == id);
         }
 
         public void Create(T obj)
@@ -37,14 +43,14 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public void Update(T obj)
         {
-            var dbEntry = this.DbSet.SingleOrDefault(x => (short) x.GetType().GetProperty("Id").GetValue(x) == (short) obj.GetType().GetProperty("Id").GetValue(obj));
+            var dbEntry = this.DbSet.SingleOrDefault(x => (short)x.GetType().GetProperty("Id").GetValue(x) == (short)obj.GetType().GetProperty("Id").GetValue(obj));
             if (dbEntry != null)
             {
                 foreach (var property in dbEntry.GetType().GetProperties())
                 {
                     var dbEntryProperty = dbEntry.GetType().GetProperty(property.Name);
                     var objValue = obj.GetType().GetProperty(property.Name).GetValue(obj);
-                    if (property.Name != "Id" && dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode())
+                    if (property.Name != "Id" && dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode()) //todo: check for null
                         dbEntryProperty.SetValue(dbEntry, objValue);
                 }
                 this.StorageContext.SaveChanges();
@@ -53,12 +59,12 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public void Delete(int id)
         {
-            //var dbEntry = this._courseDbSet.SingleOrDefault(x => x.Id == id);
-            //if (dbEntry != null)
-            //{
-            //    this._courseDbSet.Remove(dbEntry);
-            //    this._storageContext.SaveChanges();
-            //}
+            var dbEntry = this.DbSet.SingleOrDefault(x => (short)x.GetType().GetProperty("Id").GetValue(x) == id);
+            if (dbEntry != null)
+            {
+                this.DbSet.Remove(dbEntry);
+                this.StorageContext.SaveChanges();
+            }
         }
     }
 }

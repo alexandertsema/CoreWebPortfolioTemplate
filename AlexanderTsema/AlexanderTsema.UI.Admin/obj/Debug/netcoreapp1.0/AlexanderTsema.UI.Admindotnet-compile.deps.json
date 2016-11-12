@@ -16,7 +16,6 @@
     ".NETCoreApp,Version=v1.0": {
       "AlexanderTsema.UI.Admin/1.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": "1.0.1",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "1.0.1",
           "Microsoft.AspNetCore.Routing": "1.0.1",
@@ -31,7 +30,8 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "BundlerMinifier.Core": "2.2.301",
-          "Microsoft.ApplicationInsights.AspNetCore": "1.0.2"
+          "Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
+          "Microsoft.NETCore.App": "1.0.1"
         },
         "compile": {
           "AlexanderTsema.UI.Admin.dll": {}
@@ -2654,7 +2654,6 @@
     ".NETCoreApp,Version=v1.0/": {
       "AlexanderTsema.UI.Admin/1.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": "1.0.1",
           "Microsoft.AspNetCore.Diagnostics": "1.0.0",
           "Microsoft.AspNetCore.Mvc": "1.0.1",
           "Microsoft.AspNetCore.Routing": "1.0.1",
@@ -2669,7 +2668,8 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "BundlerMinifier.Core": "2.2.301",
-          "Microsoft.ApplicationInsights.AspNetCore": "1.0.2"
+          "Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
+          "Microsoft.NETCore.App": "1.0.1"
         },
         "runtime": {
           "AlexanderTsema.UI.Admin.dll": {}

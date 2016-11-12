@@ -1,5 +1,5 @@
 ﻿using AlexanderTsema.Storage.Abstractions.Core;
-using AlexanderTsema.Storage.Models.Models;
+using AlexanderTsema.Storage.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

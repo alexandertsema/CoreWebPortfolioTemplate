@@ -433,15 +433,15 @@
       },
       "AlexanderTsema.Storage.Abstractions/1.0.0": {
         "dependencies": {
-          "AlexanderTsema.Storage.Models": "1.0.0"
+          "AlexanderTsema.Storage.Entities": "1.0.0"
         },
         "runtime": {
           "AlexanderTsema.Storage.Abstractions.dll": {}
         }
       },
-      "AlexanderTsema.Storage.Models/1.0.0": {
+      "AlexanderTsema.Storage.Entities/1.0.0": {
         "runtime": {
-          "AlexanderTsema.Storage.Models.dll": {}
+          "AlexanderTsema.Storage.Entities.dll": {}
         }
       }
     }
@@ -707,7 +707,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AlexanderTsema.Storage.Models/1.0.0": {
+    "AlexanderTsema.Storage.Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

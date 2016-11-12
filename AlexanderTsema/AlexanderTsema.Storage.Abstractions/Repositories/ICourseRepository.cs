@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using AlexanderTsema.Storage.Abstractions.Core;
-using AlexanderTsema.Storage.Models.Models;
+using AlexanderTsema.Storage.Entities.Models;
 
 namespace AlexanderTsema.Storage.Abstractions.Repositories
 {
-    public interface ICourseRepository : IRepository, ICrud<Course>
-    {
-        
-    }
+    public interface ICourseRepository : IRepository, IBaseRepository<Course> { }
 }

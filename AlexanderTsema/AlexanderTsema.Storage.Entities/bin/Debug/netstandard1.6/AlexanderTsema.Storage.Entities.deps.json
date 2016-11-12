@@ -7,13 +7,12 @@
   "targets": {
     ".NETStandard,Version=v1.6": {},
     ".NETStandard,Version=v1.6/": {
-      "AlexanderTsema.Storage.Abstractions/1.0.0": {
+      "AlexanderTsema.Storage.Entities/1.0.0": {
         "dependencies": {
-          "AlexanderTsema.Storage.Entities": "1.0.0",
           "NETStandard.Library": "1.6.0"
         },
         "runtime": {
-          "AlexanderTsema.Storage.Abstractions.dll": {}
+          "AlexanderTsema.Storage.Entities.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {},
@@ -723,19 +722,11 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
-      },
-      "AlexanderTsema.Storage.Entities/1.0.0": {
-        "dependencies": {
-          "NETStandard.Library": "1.6.0"
-        },
-        "runtime": {
-          "AlexanderTsema.Storage.Entities.dll": {}
-        }
       }
     }
   },
   "libraries": {
-    "AlexanderTsema.Storage.Abstractions/1.0.0": {
+    "AlexanderTsema.Storage.Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1044,11 +1035,6 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Mk2mKmPi0nWaoiYeotq1dgeNK1fqWh61+EK+w4Wu8SWuTYLzpUnschb59bJtGywaPq7SmTuPf44wrXRwbIrukg=="
-    },
-    "AlexanderTsema.Storage.Entities/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

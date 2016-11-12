@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AlexanderTsema.Storage.Models.Models
+namespace AlexanderTsema.Storage.Entities.Models
 {
     public class School
     {
