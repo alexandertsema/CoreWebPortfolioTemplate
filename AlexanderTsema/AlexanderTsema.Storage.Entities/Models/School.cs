@@ -13,6 +13,6 @@ namespace AlexanderTsema.Storage.Entities.Models
         public DateTime EndDate { get; set; }
         public String GraduationWork { get; set; }
         public Double Gpa { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }

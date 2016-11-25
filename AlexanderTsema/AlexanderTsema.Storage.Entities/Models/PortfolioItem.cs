@@ -9,6 +9,6 @@ namespace AlexanderTsema.Storage.Entities.Models
         public String Description { get; set; }
         public String Image { get; set; }
         public String Link { get; set; }
-        public PortfolioItemType PortfolioItemType { get; set; }
+        public virtual PortfolioItemType PortfolioItemType { get; set; }
     }
 }

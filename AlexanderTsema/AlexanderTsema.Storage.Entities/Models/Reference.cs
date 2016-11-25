@@ -7,6 +7,6 @@ namespace AlexanderTsema.Storage.Entities.Models
         public Int16 Id { get; set; } 
         public String Description { get; set; } 
         public String Pdf { get; set; } 
-        public ReferenceAuthor ReferenceAuthor { get; set; } 
+        public virtual ReferenceAuthor ReferenceAuthor { get; set; } 
     }
 }
