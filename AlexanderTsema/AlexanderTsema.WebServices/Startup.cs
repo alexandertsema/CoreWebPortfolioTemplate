@@ -36,7 +36,6 @@ namespace AlexanderTsema.WebServices
             services.AddMvc();
 
             services.AddScoped(typeof(AlexanderTsema.Storage.Abstractions.Core.IStorage), typeof(AlexanderTsema.Storage.Concretes.Core.Storage));
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

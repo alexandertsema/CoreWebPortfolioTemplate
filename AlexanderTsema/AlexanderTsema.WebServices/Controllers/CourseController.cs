@@ -17,39 +17,35 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             this._storage = storage;
         }
-
-        // GET api/values
+        
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Models.Models.Course> Get()
+        public IEnumerable<AlexanderTsema.Storage.Entities.Models.Course> Get()
         {
             return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().All();
         }
-
-        // GET api/values/5
+        
         [HttpGet("{id}")]
-        public string Get(int id)
+        public AlexanderTsema.Storage.Entities.Models.Course Get(int id)
         {
-            return "value";
+            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Single(id);
         }
-
-        // POST api/values
+        
         [HttpPost]
-        public void Post(AlexanderTsema.Storage.Models.Models.Course course)
+        public void Post([FromBody]AlexanderTsema.Storage.Entities.Models.Course course)
         {
             this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Create(course);
-            this._storage.Save();
         }
-
-        // PUT api/values/5
+        
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]AlexanderTsema.Storage.Entities.Models.Course course)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Update(course);
         }
-
-        // DELETE api/values/5
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Delete(id);
         }
     }
 }

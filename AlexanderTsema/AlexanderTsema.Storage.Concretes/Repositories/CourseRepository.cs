@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using AlexanderTsema.Storage.Abstractions.Core;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AlexanderTsema.Storage.Concretes.Core;
-using AlexanderTsema.Storage.Models.Models;
+using AlexanderTsema.Storage.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AlexanderTsema.Storage.Concretes.Repositories
@@ -22,27 +23,39 @@ namespace AlexanderTsema.Storage.Concretes.Repositories
 
         public IEnumerable<Course> All()
         {
-            return this._courseDbSet.OrderBy(i => i.Id);
+            return this._courseDbSet.Include(x=>x.School).OrderBy(i => i.Id);
         }
 
         public Course Single(int id)
         {
-            throw new System.NotImplementedException();
+            return this._courseDbSet.Where(x => x.Id == id).Include(x => x.School).SingleOrDefault();
         }
 
         public void Create(Course course)
         {
             this._courseDbSet.Add(course);
+            this._storageContext.SaveChanges();
         }
 
         public void Update(Course course)
         {
-            throw new System.NotImplementedException();
+            var dbEntry = this._courseDbSet.SingleOrDefault(x => x.Id == course.Id);
+            if (dbEntry != null)
+            {
+                dbEntry.Name = course.Name;
+                dbEntry.School = course.School;
+            }
+            this._storageContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var dbEntry = this._courseDbSet.SingleOrDefault(x => x.Id == id);
+            if (dbEntry != null)
+            {
+                this._courseDbSet.Remove(dbEntry);
+                this._storageContext.SaveChanges();
+            }
         }
     }
 }

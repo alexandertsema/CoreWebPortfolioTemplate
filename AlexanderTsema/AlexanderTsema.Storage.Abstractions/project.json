@@ -2,13 +2,16 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "AlexanderTsema.Storage.Models": "1.0.0-*",
-    "NETStandard.Library": "1.6.0"
+    "AlexanderTsema.Storage.Entities": "1.0.0-*",
+    "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {
     "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+  "runtimes": {
+    "win10-x64": {}
   }
 }

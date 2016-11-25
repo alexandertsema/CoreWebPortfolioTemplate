@@ -17,31 +17,33 @@ namespace AlexanderTsema.WebServices.Controllers
         }
         
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Models.Models.School> Get()
+        public IEnumerable<AlexanderTsema.Storage.Entities.Models.School> Get()
         {
             return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().All();
         }
         
         [HttpGet("{id}")]
-        public string Get(int id)
+        public AlexanderTsema.Storage.Entities.Models.School Get(int id)
         {
-            return "value";
+            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Single(id);
         }
         
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]AlexanderTsema.Storage.Entities.Models.School school)
         {
-
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Create(school);
         }
         
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody]AlexanderTsema.Storage.Entities.Models.School school)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Update(school);
         }
         
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Delete(id);
         }
     }
 }

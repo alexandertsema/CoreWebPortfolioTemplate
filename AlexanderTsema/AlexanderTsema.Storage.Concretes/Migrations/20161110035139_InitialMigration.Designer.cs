@@ -17,7 +17,7 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AlexanderTsema.Storage.Models.Models.Course", b =>
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Models.Course", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd();
@@ -33,7 +33,7 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.ToTable("Course");
                 });
 
-            modelBuilder.Entity("AlexanderTsema.Storage.Models.Models.School", b =>
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Models.School", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd();
@@ -57,9 +57,9 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.ToTable("School");
                 });
 
-            modelBuilder.Entity("AlexanderTsema.Storage.Models.Models.Course", b =>
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Models.Course", b =>
                 {
-                    b.HasOne("AlexanderTsema.Storage.Models.Models.School")
+                    b.HasOne("AlexanderTsema.Storage.Entities.Models.School")
                         .WithMany("Courses")
                         .HasForeignKey("SchoolId");
                 });
