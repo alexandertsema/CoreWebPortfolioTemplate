@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AlexanderTsema.Storage.Abstractions.Core;
-using AlexanderTsema.Storage.Concretes.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using AlexanderTsema.Storage.Concretes.Helpers;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace AlexanderTsema.Storage.Concretes.Core
 {
@@ -49,38 +44,34 @@ namespace AlexanderTsema.Storage.Concretes.Core
         public void Update(T entity)
         {
             var dbEntry = this.DbSet.Where(x => (short)x.GetType().GetRuntimeProperty("Id").GetValue(x) == (short)entity.GetType().GetRuntimeProperty("Id").GetValue(entity)).IncludeAll().SingleOrDefault();
-            if (dbEntry != null)
+            if (dbEntry == null) return;
+            foreach (var property in dbEntry.GetType().GetRuntimeProperties())
             {
-                foreach (var property in dbEntry.GetType().GetRuntimeProperties())
-                {
-                    var dbEntryProperty = dbEntry.GetType().GetRuntimeProperty(property.Name);
-                    var objValue = entity.GetType().GetRuntimeProperty(property.Name).GetValue(entity);
+                var dbEntryProperty = dbEntry.GetType().GetRuntimeProperty(property.Name);
+                var objValue = entity.GetType().GetRuntimeProperty(property.Name).GetValue(entity);
 
-                    if (property.Name == "Id") continue;
-                    if (dbEntryProperty.GetValue(dbEntry) != null && objValue != null )
-                    {
-                        if (dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode())
-                        {
-                            dbEntryProperty.SetValue(dbEntry, objValue);
-                        }
-                    }
-                    else
+                if (property.Name == "Id") continue;
+                if (dbEntryProperty.GetValue(dbEntry) != null && objValue != null )
+                {
+                    if (dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode())
                     {
                         dbEntryProperty.SetValue(dbEntry, objValue);
                     }
                 }
-                this.StorageContext.SaveChanges();
+                else
+                {
+                    dbEntryProperty.SetValue(dbEntry, objValue);
+                }
             }
+            this.StorageContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
             var dbEntry = this.DbSet.Where(x => (short)x.GetType().GetRuntimeProperty("Id").GetValue(x) == id).IncludeAll().SingleOrDefault();
-            if (dbEntry != null)
-            {
-                this.DbSet.Remove(dbEntry);
-                this.StorageContext.SaveChanges();
-            }
+            if (dbEntry == null) return;
+            this.DbSet.Remove(dbEntry);
+            this.StorageContext.SaveChanges();
         }
     }
 }

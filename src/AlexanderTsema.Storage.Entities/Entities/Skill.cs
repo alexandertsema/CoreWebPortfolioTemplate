@@ -2,9 +2,8 @@
 
 namespace AlexanderTsema.Storage.Entities.Entities
 {
-    public class Skill
+    public class Skill : BaseEntity
     {
-        public Int16 Id { get; set; } 
         public String Name { get; set; } 
         public Int16 Priority { get; set; } 
     }

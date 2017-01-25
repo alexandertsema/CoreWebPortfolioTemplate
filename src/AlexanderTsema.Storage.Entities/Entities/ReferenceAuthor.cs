@@ -2,9 +2,8 @@
 
 namespace AlexanderTsema.Storage.Entities.Entities
 {
-    public class ReferenceAuthor
+    public class ReferenceAuthor : BaseEntity
     {
-        public Int16 Id { get; set; } 
         public String Name { get; set; } 
         public String Image { get; set; } 
         public String CompanyName { get; set; } 

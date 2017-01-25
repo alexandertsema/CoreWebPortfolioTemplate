@@ -23,9 +23,15 @@ namespace AlexanderTsema.Storage.Concretes.Core
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<School>();
+            modelBuilder.Entity<Content>();
             modelBuilder.Entity<Course>();
+            modelBuilder.Entity<PortfolioItem>();
+            modelBuilder.Entity<PortfolioItemType>();
+            modelBuilder.Entity<Reference>();
+            modelBuilder.Entity<ReferenceAuthor>();
+            modelBuilder.Entity<School>();
             modelBuilder.Entity<Skill>();
+            modelBuilder.Entity<Summary>();
         }
     }
     /// <summary>

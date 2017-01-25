@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace AlexanderTsema.Storage.Entities.Entities
 {
-    public class Summary
+    public class Summary : BaseEntity
     {
-        public Int16 Id { get; set; } 
         public String Description { get; set; } 
         public IEnumerable<Skill> Skills { get; set; } 
     }
