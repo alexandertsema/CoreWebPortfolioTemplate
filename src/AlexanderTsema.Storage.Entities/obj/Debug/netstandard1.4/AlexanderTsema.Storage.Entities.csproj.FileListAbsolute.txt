@@ -1,0 +1,6 @@
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\bin\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.deps.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\bin\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\bin\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\obj\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.AssemblyInfo.cs
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\obj\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Entities\obj\Debug\netstandard1.4\AlexanderTsema.Storage.Entities.pdb

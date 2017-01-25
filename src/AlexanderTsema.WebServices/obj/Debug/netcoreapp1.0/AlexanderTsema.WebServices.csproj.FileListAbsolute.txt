@@ -1,0 +1,15 @@
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.WebServices.deps.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.WebServices.runtimeconfig.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.WebServices.runtimeconfig.dev.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\obj\Debug\netcoreapp1.0\AlexanderTsema.WebServices.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\obj\Debug\netcoreapp1.0\AlexanderTsema.WebServices.AssemblyInfo.cs
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.WebServices.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.WebServices.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Abstractions.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Concretes.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Entities.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Abstractions.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Concretes.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.0\AlexanderTsema.Storage.Entities.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\obj\Debug\netcoreapp1.0\AlexanderTsema.WebServices.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\obj\Debug\netcoreapp1.0\AlexanderTsema.WebServices.pdb
