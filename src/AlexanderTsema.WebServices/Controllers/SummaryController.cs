@@ -16,34 +16,35 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             this._storage = storage;
         }
+
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.Summary> Get()
+        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Summary>> Get()
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().All();
         }
 
         [HttpGet("{id}")]
-        public AlexanderTsema.Storage.Entities.Entities.Summary Get(int id)
+        public async Task<AlexanderTsema.Storage.Entities.Entities.Summary> Get(int id)
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Single(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
+        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Create(summary);
+            await  this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Create(summary);
         }
 
         [HttpPut("{id}")]
-        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
+        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Update(summary);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Update(summary);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().Delete(id);
         }
     }
 }

@@ -16,34 +16,35 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             this._storage = storage;
         }
+
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor> Get()
+        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor>> Get()
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().All();
         }
 
         [HttpGet("{id}")]
-        public AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor Get(int id)
+        public async Task<AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor> Get(int id)
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Single(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
+        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Create(referenceAuthor);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Create(referenceAuthor);
         }
 
         [HttpPut("{id}")]
-        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
+        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Update(referenceAuthor);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Update(referenceAuthor);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Delete(id);
         }
     }
 }

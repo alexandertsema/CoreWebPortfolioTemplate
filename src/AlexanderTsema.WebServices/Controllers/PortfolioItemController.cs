@@ -16,34 +16,35 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             this._storage = storage;
         }
+
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.PortfolioItem> Get()
+        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.PortfolioItem>> Get()
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().All();
         }
 
         [HttpGet("{id}")]
-        public AlexanderTsema.Storage.Entities.Entities.PortfolioItem Get(int id)
+        public async Task<AlexanderTsema.Storage.Entities.Entities.PortfolioItem> Get(int id)
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Single(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
+        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Create(portfolioItem);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Create(portfolioItem);
         }
 
         [HttpPut("{id}")]
-        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
+        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Update(portfolioItem);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Update(portfolioItem);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Delete(id);
         }
     }
 }

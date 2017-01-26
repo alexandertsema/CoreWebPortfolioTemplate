@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,34 +17,35 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             this._storage = storage;
         }
+
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.Content> Get()
+        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Content>> Get()
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().All();
         }
 
         [HttpGet("{id}")]
-        public AlexanderTsema.Storage.Entities.Entities.Content Get(int id)
+        public async Task<Content> Get(int id)
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Single(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
+        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Create(content);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Create(content);
         }
 
         [HttpPut("{id}")]
-        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
+        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Update(content);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Update(content);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Delete(id);
         }
     }
 }
