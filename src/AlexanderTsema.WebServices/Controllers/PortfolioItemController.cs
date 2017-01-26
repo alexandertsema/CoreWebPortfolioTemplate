@@ -11,36 +11,39 @@ namespace AlexanderTsema.WebServices.Controllers
     [Route("api/[controller]")]
     public class PortfolioItemController : Controller
     {
-        // GET: api/values
+        private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
+        public PortfolioItemController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        {
+            this._storage = storage;
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.PortfolioItem> Get()
         {
-            return new string[] { "value1", "value2" };
+            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().All();
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public AlexanderTsema.Storage.Entities.Entities.PortfolioItem Get(int id)
         {
-            return "value";
+            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Single(id);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Create(portfolioItem);
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.PortfolioItem portfolioItem)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Update(portfolioItem);
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IPortfolioItemRepository>().Delete(id);
         }
     }
 }
