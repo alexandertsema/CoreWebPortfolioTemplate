@@ -17,33 +17,33 @@ namespace AlexanderTsema.WebServices.Controllers
         }
         
         [HttpGet]
-        public IEnumerable<AlexanderTsema.Storage.Entities.Entities.School> Get()
+        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.School>> Get()
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().All();
         }
         
         [HttpGet("{id}")]
-        public AlexanderTsema.Storage.Entities.Entities.School Get(int id)
+        public async Task<AlexanderTsema.Storage.Entities.Entities.School> Get(int id)
         {
-            return this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Single(id);
         }
         
         [HttpPost]
-        public void Post([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
+        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Create(school);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Create(school);
         }
         
         [HttpPut]
-        public void Put([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
+        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Update(school);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Update(school);
         }
         
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Delete(id);
         }
     }
 }

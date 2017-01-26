@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace AlexanderTsema.Storage.Entities.Entities
 {
-    public class School
+    public class School : BaseEntity
     {
-        public Int16 Id { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
         public String Degree { get; set; }

@@ -16,7 +16,6 @@ namespace AlexanderTsema.Storage.Concretes.Helpers
         {
             var type = typeof(T);
             var properties = type.GetRuntimeProperties();
-//            var properties = type.GetProperties();
             return properties.Where(property => property.GetMethod.IsVirtual).Aggregate(queryable, (current, property) => current.Include(property.Name));
         }
     }

@@ -8,9 +8,10 @@ using AlexanderTsema.Storage.Concretes.Core;
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20170125033004_FullModel")]
+    partial class FullModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -199,7 +200,7 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Reference", b =>
                 {
                     b.HasOne("AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor", "ReferenceAuthor")
-                        .WithMany("References")
+                        .WithMany()
                         .HasForeignKey("ReferenceAuthorId");
                 });
 
