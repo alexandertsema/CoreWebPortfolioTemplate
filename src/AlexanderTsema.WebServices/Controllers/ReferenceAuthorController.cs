@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,18 +30,21 @@ namespace AlexanderTsema.WebServices.Controllers
             return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Single(id);
         }
 
+//        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
         {
             await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Create(referenceAuthor);
         }
 
+//        [Authorize]
         [HttpPut("{id}")]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
         {
             await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().Update(referenceAuthor);
         }
 
+//        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {

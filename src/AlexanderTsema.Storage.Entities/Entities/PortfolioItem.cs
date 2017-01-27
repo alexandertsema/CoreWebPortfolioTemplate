@@ -8,6 +8,6 @@ namespace AlexanderTsema.Storage.Entities.Entities
         public String Description { get; set; }
         public String Image { get; set; }
         public String Link { get; set; }
-        public virtual PortfolioItemType PortfolioItemType { get; set; }
+        public virtual PortfolioItemCategory Category { get; set; }
     }
 }
