@@ -34,6 +34,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
             modelBuilder.Entity<Skill>();
             modelBuilder.Entity<SkillCategory>();
             modelBuilder.Entity<Summary>();
+            modelBuilder.Entity<Resume>();
         }
     }
     /// <summary>
