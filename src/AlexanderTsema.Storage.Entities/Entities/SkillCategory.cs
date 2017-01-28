@@ -6,6 +6,6 @@ namespace AlexanderTsema.Storage.Entities.Entities
     public class SkillCategory : BaseEntity
     {
         public String Name { get; set; }
-        public IEnumerable<Skill> Skills { get; set; }
+        public virtual IEnumerable<Skill> Skills { get; set; }
     }
 }
