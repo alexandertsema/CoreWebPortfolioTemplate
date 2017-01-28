@@ -22,34 +22,34 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Skill>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().AllAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<AlexanderTsema.Storage.Entities.Entities.Skill> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().SingleAsync(id);
         }
 
 //        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Skill skill)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().Create(skill);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().CreateAsync(skill);
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Skill skill)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().Update(skill);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().UpdateAsync(skill);
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().DeleteAsync(id);
         }
     }
 }

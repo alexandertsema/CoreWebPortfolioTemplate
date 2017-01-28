@@ -21,34 +21,34 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Reference>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().AllAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<AlexanderTsema.Storage.Entities.Entities.Reference> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().SingleAsync(id);
         }
 
 //        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Reference reference)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().Create(reference);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().CreateAsync(reference);
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Reference reference)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().Update(reference);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().UpdateAsync(reference);
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceRepository>().DeleteAsync(id);
         }
     }
 }

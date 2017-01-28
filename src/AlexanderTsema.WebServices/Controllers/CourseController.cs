@@ -22,34 +22,34 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Course>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().AllAsync();
         }
         
         [HttpGet("{id}")]
         public async Task<AlexanderTsema.Storage.Entities.Entities.Course> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().SingleAsync(id);
         }
 
 //        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Course course)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Create(course);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().CreateAsync(course);
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Course course)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Update(course);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().UpdateAsync(course);
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().DeleteAsync(id);
         }
     }
 }

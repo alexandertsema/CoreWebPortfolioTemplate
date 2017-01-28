@@ -20,34 +20,34 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.School>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().AllAsync();
         }
         
         [HttpGet("{id}")]
         public async Task<AlexanderTsema.Storage.Entities.Entities.School> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().SingleAsync(id);
         }
 
 //        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Create(school);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().CreateAsync(school);
         }
 
 //        [Authorize]
         [HttpPut]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.School school)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Update(school);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().UpdateAsync(school);
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISchoolRepository>().DeleteAsync(id);
         }
     }
 }

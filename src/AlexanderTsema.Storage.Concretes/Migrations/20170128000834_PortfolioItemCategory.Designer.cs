@@ -8,32 +8,19 @@ using AlexanderTsema.Storage.Concretes.Core;
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20170128000834_PortfolioItemCategory")]
+    partial class PortfolioItemCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Certificate", b =>
-                {
-                    b.Property<short>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Image");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Certificate");
-                });
-
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Content", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CertificateTitle");
 
                     b.Property<string>("ContactsTitle");
 
@@ -152,8 +139,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.Property<double>("Gpa");
 
                     b.Property<string>("GraduationWork");
-
-                    b.Property<string>("Image");
 
                     b.Property<string>("Name");
 

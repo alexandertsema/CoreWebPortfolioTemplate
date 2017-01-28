@@ -24,9 +24,10 @@ namespace AlexanderTsema.Storage.Concretes.Core
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Content>();
+            modelBuilder.Entity<Certificate>();
             modelBuilder.Entity<Course>();
             modelBuilder.Entity<PortfolioItem>();
-            modelBuilder.Entity<PortfolioItemType>();
+            modelBuilder.Entity<PortfolioItemCategory>();
             modelBuilder.Entity<Reference>();
             modelBuilder.Entity<ReferenceAuthor>();
             modelBuilder.Entity<School>();

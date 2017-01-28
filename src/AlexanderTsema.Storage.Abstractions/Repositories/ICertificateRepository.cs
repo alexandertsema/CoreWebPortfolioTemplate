@@ -3,5 +3,5 @@ using AlexanderTsema.Storage.Entities.Entities;
 
 namespace AlexanderTsema.Storage.Abstractions.Repositories
 {
-    public interface IPortfolioItemCategoryRepository : IRepository, IBaseRepository<PortfolioItemCategory> { }
+    public interface ICertificateRepository : IRepository, IBaseRepository<Certificate> { }
 }

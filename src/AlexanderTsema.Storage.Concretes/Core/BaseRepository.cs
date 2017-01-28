@@ -25,17 +25,17 @@ namespace AlexanderTsema.Storage.Concretes.Core
             if (context != null) this.DbSet = context.Set<T>();
         }
 
-        public virtual async Task<IEnumerable<T>> All()
+        public virtual async Task<IEnumerable<T>> AllAsync()
         {
             return await Task.Run(() => this.DbSet.OrderBy(i => i.GetType().GetRuntimeProperty("Id").GetValue(i)).IncludeAll());
         }
 
-        public virtual async Task<T> Single(int id)
+        public virtual async Task<T> SingleAsync(int id)
         {
             return await Task.Run(() => this.DbSet.Where(x => (short)x.GetType().GetRuntimeProperty("Id").GetValue(x) == id).IncludeAll().SingleOrDefault());
         }
 
-        public virtual async Task Create(T entity)
+        public virtual async Task CreateAsync(T entity)
         {
             await Task.Run(() =>
             {
@@ -44,7 +44,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
             });
         }
 
-        public virtual async Task Update(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             await Task.Run(() =>
             {
@@ -78,7 +78,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
             });
         }
 
-        public virtual async Task Delete(int id)
+        public virtual async Task DeleteAsync(int id)
         {
             await Task.Run(() =>
             {

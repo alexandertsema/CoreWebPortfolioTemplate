@@ -5,10 +5,10 @@ namespace AlexanderTsema.Storage.Abstractions.Core
 {
     public interface IBaseRepository<T>
     {
-        Task<IEnumerable<T>> All();
-        Task<T> Single(int id);
-        Task Create(T model);
-        Task Update(T model);
-        Task Delete(int id);
+        Task<IEnumerable<T>> AllAsync();
+        Task<T> SingleAsync(int id);
+        Task CreateAsync(T model);
+        Task UpdateAsync(T model);
+        Task DeleteAsync(int id);
     }
 }

@@ -4,7 +4,7 @@ using AlexanderTsema.Storage.Entities.Entities;
 
 namespace AlexanderTsema.Storage.Concretes.Repositories
 {
-    public class PortfolioItemTypeRepository : BaseRepository<PortfolioItemType>, IPortfolioItemTypeRepository
+    public class CertificateRepository : BaseRepository<Certificate>, ICertificateRepository
     {
         
     }

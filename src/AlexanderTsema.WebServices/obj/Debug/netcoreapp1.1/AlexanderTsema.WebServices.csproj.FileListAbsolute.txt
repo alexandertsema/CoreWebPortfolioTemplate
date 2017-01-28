@@ -1,4 +1,0 @@
-C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.1\AlexanderTsema.WebServices.dll
-C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.1\AlexanderTsema.Storage.Abstractions.dll
-C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.1\AlexanderTsema.Storage.Concretes.dll
-C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.WebServices\bin\Debug\netcoreapp1.1\AlexanderTsema.Storage.Entities.dll

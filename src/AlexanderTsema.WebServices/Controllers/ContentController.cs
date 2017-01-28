@@ -22,34 +22,34 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Content>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().All();
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().AllAsync();
         }
 
         [HttpGet("{id}")]
         public async Task<Content> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Single(id);
+            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().SingleAsync(id);
         }
 
 //        [Authorize]
         [HttpPost]
         public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Create(content);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().CreateAsync(content);
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
         public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Update(content);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().UpdateAsync(content);
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().Delete(id);
+            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().DeleteAsync(id);
         }
     }
 }
