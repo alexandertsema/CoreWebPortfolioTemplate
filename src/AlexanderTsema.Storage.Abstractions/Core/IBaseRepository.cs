@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Entities.Entities;
 
 namespace AlexanderTsema.Storage.Abstractions.Core
 {
@@ -7,8 +8,8 @@ namespace AlexanderTsema.Storage.Abstractions.Core
     {
         Task<IEnumerable<T>> AllAsync();
         Task<T> SingleAsync(int id);
-        Task CreateAsync(T model);
-        Task UpdateAsync(T model);
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
     }
 }

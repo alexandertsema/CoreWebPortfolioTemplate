@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Entities.Entities;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +16,19 @@ namespace AlexanderTsema.WebServices.Controllers
     public class SkillController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
+        private readonly IMapper _mapper;
 
-        public SkillController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        public SkillController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage, IMapper mapper)
         {
             this._storage = storage;
+            this._mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Skill>> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().AllAsync();
+            var skills = await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillRepository>().AllAsync();
+            return _mapper.Map<IEnumerable<Skill>, IEnumerable<Skill>>(skills);
         }
 
         [HttpGet("{id}")]

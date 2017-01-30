@@ -8,9 +8,10 @@ using AlexanderTsema.Storage.Concretes.Core;
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class StorageContextModelSnapshot : ModelSnapshot
+    [Migration("20170128052216_Timestamp")]
+    partial class Timestamp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
@@ -28,8 +29,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("RecieveDate");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -51,8 +50,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("TestimonialsTitle");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.Property<string>("WorkTitle");
 
                     b.HasKey("Id");
@@ -68,8 +65,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.Property<string>("Name");
 
                     b.Property<short?>("SchoolId");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -93,8 +88,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -108,8 +101,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -126,8 +117,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.Property<string>("Pdf");
 
                     b.Property<short?>("ReferenceAuthorId");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -151,8 +140,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Position");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.HasKey("Id");
 
                     b.ToTable("ReferenceAuthor");
@@ -164,8 +151,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Path");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -193,8 +178,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.HasKey("Id");
 
                     b.ToTable("School");
@@ -211,8 +194,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<short?>("SkillCategoryId");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.HasKey("Id");
 
                     b.HasIndex("SkillCategoryId");
@@ -227,8 +208,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<DateTime>("Timestamp");
-
                     b.HasKey("Id");
 
                     b.ToTable("SkillCategory");
@@ -240,8 +219,6 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
-
-                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 

@@ -8,7 +8,8 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.0" />
@@ -22,8 +23,10 @@
     <PackageReference Include="Microsoft.NETCore.App" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlexanderTsema.Mapper\AlexanderTsema.Mapper.csproj" />
     <ProjectReference Include="..\AlexanderTsema.Storage.Abstractions\AlexanderTsema.Storage.Abstractions.csproj" />
     <ProjectReference Include="..\AlexanderTsema.Storage.Concretes\AlexanderTsema.Storage.Concretes.csproj" />
     <ProjectReference Include="..\AlexanderTsema.Storage.Entities\AlexanderTsema.Storage.Entities.csproj" />
+    <ProjectReference Include="..\AlexanderTsema.ViewModels\AlexanderTsema.ViewModels.csproj" />
   </ItemGroup>
 </Project>

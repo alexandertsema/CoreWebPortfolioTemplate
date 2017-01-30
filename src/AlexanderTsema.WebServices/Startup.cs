@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Mapper.Mapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +31,7 @@ namespace AlexanderTsema.WebServices
         {
             // Add framework services.
             services.AddMvc();
+            services.AddAutoMapper(typeof(MappingProfile));
 
             // Add DI
             services.AddScoped(typeof(AlexanderTsema.Storage.Abstractions.Core.IStorage),
