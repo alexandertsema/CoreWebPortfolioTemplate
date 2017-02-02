@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AlexanderTsema.ViewModels {
+namespace AlexanderTsema.ViewModels.Properties {
     using System;
     using System.Reflection;
     
@@ -23,14 +23,14 @@ namespace AlexanderTsema.ViewModels {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ValidationErrors {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ValidationErrors() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -40,7 +40,7 @@ namespace AlexanderTsema.ViewModels {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlexanderTsema.ViewModels.ValidationErrors", typeof(ValidationErrors).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlexanderTsema.ViewModels.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58,42 +58,6 @@ namespace AlexanderTsema.ViewModels {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The text is more than 500 characters long.
-        /// </summary>
-        internal static string Length_Long {
-            get {
-                return ResourceManager.GetString("Length_Long", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The string is more than 50 characters length.
-        /// </summary>
-        internal static string Length_Short {
-            get {
-                return ResourceManager.GetString("Length_Short", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The GPA should be between 0.0 and 4.0.
-        /// </summary>
-        internal static string Range_Gpa {
-            get {
-                return ResourceManager.GetString("Range_Gpa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This field is required.
-        /// </summary>
-        internal static string Required {
-            get {
-                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
     }

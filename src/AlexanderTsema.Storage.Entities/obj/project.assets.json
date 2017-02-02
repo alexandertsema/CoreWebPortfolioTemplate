@@ -4505,7 +4505,7 @@
       "projectName": "AlexanderTsema.Storage.Entities",
       "projectPath": "C:\\Users\\Alex\\Documents\\Visual Studio 2017\\Projects\\PortfolioTemplate\\src\\AlexanderTsema.Storage.Entities\\AlexanderTsema.Storage.Entities.csproj",
       "outputPath": "C:\\Users\\Alex\\Documents\\Visual Studio 2017\\Projects\\PortfolioTemplate\\src\\AlexanderTsema.Storage.Entities\\obj\\",
-      "outputType": "NETCore",
+      "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard1.6"
       ],

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AutoMapper;
@@ -21,21 +20,24 @@ namespace AlexanderTsema.WebServices.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.ViewModels.ViewModels.Certificate>> Get()
+        public async Task<IActionResult> Get()
         {
             var certificates = await this._storage.GetRepository<ICertificateRepository>().AllAsync();
-            return _mapper.Map<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Certificate>, IEnumerable<AlexanderTsema.ViewModels.ViewModels.Certificate>>(certificates);
+            return
+                Ok(_mapper
+                        .Map
+                        <IEnumerable<AlexanderTsema.Storage.Entities.Entities.Certificate>,
+                            IEnumerable<AlexanderTsema.ViewModels.ViewModels.Certificate>>(certificates));
         }
 
         [HttpGet("{id}")]
-        public async Task<AlexanderTsema.ViewModels.ViewModels.Certificate> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var certificate = await this._storage.GetRepository<ICertificateRepository>().SingleAsync(id);
-            return
-                _mapper
-                    .Map
-                    <AlexanderTsema.Storage.Entities.Entities.Certificate,
-                        AlexanderTsema.ViewModels.ViewModels.Certificate>(certificate);
+            return Ok(_mapper
+                            .Map
+                            <AlexanderTsema.Storage.Entities.Entities.Certificate,
+                                AlexanderTsema.ViewModels.ViewModels.Certificate>(certificate));
         }
 
         //        [Authorize]
@@ -54,21 +56,24 @@ namespace AlexanderTsema.WebServices.Controllers
 
         //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.ViewModels.ViewModels.Certificate certificate)
+        public async Task<IActionResult> Put([FromBody]AlexanderTsema.ViewModels.ViewModels.Certificate certificate)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var entity =
                 _mapper
                     .Map
                     <AlexanderTsema.ViewModels.ViewModels.Certificate,
                         AlexanderTsema.Storage.Entities.Entities.Certificate>(certificate);
             await this._storage.GetRepository<ICertificateRepository>().UpdateAsync(entity);
+            return Ok();
         }
 
         //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await this._storage.GetRepository<ICertificateRepository>().DeleteAsync(id);
+            return Ok();
         }
     }
 }

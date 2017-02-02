@@ -4505,7 +4505,7 @@
       "projectName": "AlexanderTsema.ViewModels",
       "projectPath": "C:\\Users\\Alex\\Documents\\Visual Studio 2017\\Projects\\PortfolioTemplate\\src\\AlexanderTsema.ViewModels\\AlexanderTsema.ViewModels.csproj",
       "outputPath": "C:\\Users\\Alex\\Documents\\Visual Studio 2017\\Projects\\PortfolioTemplate\\src\\AlexanderTsema.ViewModels\\obj\\",
-      "outputType": "NETCore",
+      "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard1.6"
       ],

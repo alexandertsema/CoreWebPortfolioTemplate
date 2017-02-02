@@ -123,6 +123,9 @@
   <data name="Length_Short" xml:space="preserve">
     <value>The string is more than 50 characters length</value>
   </data>
+  <data name="Range_Gpa" xml:space="preserve">
+    <value>The GPA should be between 0.0 and 4.0</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>This field is required</value>
   </data>
