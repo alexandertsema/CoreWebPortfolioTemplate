@@ -112,8 +112,9 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             try
             {
-                await this._storage.GetRepository<IResumeRepository>().DeleteAsync(id);
-                return Ok();
+                if (await this._storage.GetRepository<IResumeRepository>().DeleteAsync(id))
+                    return Ok();
+                return NotFound();
             }
             catch (Exception e)
             {

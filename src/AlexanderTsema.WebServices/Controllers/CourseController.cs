@@ -95,8 +95,8 @@ namespace AlexanderTsema.WebServices.Controllers
                 var entity =
                     _mapper
                         .Map
-                        <ViewModels.ViewModels.PortfolioItem,
-                            Storage.Entities.Entities.PortfolioItem>(course);
+                        <ViewModels.ViewModels.Course,
+                            Storage.Entities.Entities.Course>(course);
                 await this._storage.GetRepository<ICourseRepository>().UpdateAsync(entity);
                 return Ok();
             }
@@ -113,8 +113,9 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             try
             {
-                await this._storage.GetRepository<ICourseRepository>().DeleteAsync(id);
-                return Ok();
+                if (await this._storage.GetRepository<ICourseRepository>().DeleteAsync(id))
+                    return Ok();
+                return NotFound();
             }
             catch (Exception e)
             {

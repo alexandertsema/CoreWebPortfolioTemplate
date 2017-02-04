@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AlexanderTsema.ViewModels.ViewModels
 {
-    public class PortfolioItem
+    public class PortfolioItem : BaseViewModel
     {
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]

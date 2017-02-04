@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AlexanderTsema.Storage.Abstractions.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -78,18 +79,16 @@ namespace AlexanderTsema.Storage.Concretes.Core
             });
         }
 
-        public virtual async Task DeleteAsync(int id)
+        public virtual async Task<Boolean> DeleteAsync(int id) => await Task.Run(() =>
         {
-            await Task.Run(() =>
-            {
-                var dbEntry =
-                    this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
-                        .IncludeAll()
-                        .SingleOrDefault();
-                if (dbEntry == null) return;
-                this.DbSet.Remove(dbEntry);
-                this.StorageContext.SaveChanges();
-            });
-        }
+            var dbEntry =
+                this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
+                    .IncludeAll()
+                    .SingleOrDefault();
+            if (dbEntry == null) return false;
+            this.DbSet.Remove(dbEntry);
+            this.StorageContext.SaveChanges();
+            return true;
+        });
     }
 }

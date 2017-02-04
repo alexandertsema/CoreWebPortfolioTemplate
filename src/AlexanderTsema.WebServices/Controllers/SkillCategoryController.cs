@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Abstractions.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -10,43 +13,114 @@ namespace AlexanderTsema.WebServices.Controllers
     public class SkillCategoryController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
+        private readonly IMapper _mapper;
+        private readonly ILogger<SkillCategoryController> _log;
 
-        public SkillCategoryController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        public SkillCategoryController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage,
+            IMapper mapper, ILogger<SkillCategoryController> log)
         {
             this._storage = storage;
+            this._mapper = mapper;
+            this._log = log;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.SkillCategory>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillCategoryRepository>().AllAsync();
+            try
+            {
+                var skillCatalogs = await this._storage.GetRepository<ISkillCategoryRepository>().AllAsync();
+                return
+                    Ok(_mapper
+                         .Map
+                            <IEnumerable<Storage.Entities.Entities.SkillCategory>, 
+                            IEnumerable<ViewModels.ViewModels.SkillCategory>>(skillCatalogs));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<AlexanderTsema.Storage.Entities.Entities.SkillCategory> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillCategoryRepository>().SingleAsync(id);
+            try
+            {
+                var skillCatalog = await this._storage.GetRepository<ISkillCategoryRepository>().SingleAsync(id);
+                return
+                    Ok(_mapper
+                         .Map
+                            <Storage.Entities.Entities.SkillCategory,
+                            ViewModels.ViewModels.SkillCategory>(skillCatalog));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         //        [Authorize]
         [HttpPost]
-        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.SkillCategory skillCategory)
+        public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.SkillCategory skillCategory)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillCategoryRepository>().CreateAsync(skillCategory);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.SkillCategory,
+                            Storage.Entities.Entities.SkillCategory>(skillCategory);
+                await this._storage.GetRepository<ISkillCategoryRepository>().CreateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.SkillCategory skillCategory)
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.SkillCategory skillCategory)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillCategoryRepository>().UpdateAsync(skillCategory);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.SkillCategory,
+                            Storage.Entities.Entities.SkillCategory>(skillCategory);
+                await this._storage.GetRepository<ISkillCategoryRepository>().UpdateAsync(entity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISkillCategoryRepository>().DeleteAsync(id);
+            try
+            {
+                if (await this._storage.GetRepository<ISkillCategoryRepository>().DeleteAsync(id))
+                    return Ok();
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
     }
 }

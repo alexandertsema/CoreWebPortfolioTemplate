@@ -4,7 +4,7 @@ using AlexanderTsema.ViewModels.ViewModels;
 
 namespace AlexanderTsema.ViewModels.ViewModels
 {
-    public class Reference
+    public class Reference : BaseViewModel
     {
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(500, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Long")]

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AlexanderTsema.ViewModels.ViewModels
 {
-    public class Summary
+    public class Summary : BaseViewModel
     {
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(500, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Long")]
