@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AlexanderTsema.Storage.Entities.Entities;
+using AlexanderTsema.Storage.Abstractions.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -14,42 +14,113 @@ namespace AlexanderTsema.WebServices.Controllers
     public class ContentController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
-        public ContentController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        private readonly IMapper _mapper;
+        readonly ILogger<ContentController> _log;
+
+        public ContentController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage, IMapper mapper, ILogger<ContentController> log)
         {
             this._storage = storage;
+            this._mapper = mapper;
+            this._log = log;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Content>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().AllAsync();
+            try
+            {
+                var contents = await this._storage.GetRepository<IContentRepository>().AllAsync();
+                return
+                    Ok(
+                        _mapper
+                            .Map
+                            <IEnumerable<Storage.Entities.Entities.Content>, 
+                                IEnumerable<ViewModels.ViewModels.Content>>
+                                (contents));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<Content> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().SingleAsync(id);
+            try
+            {
+                var content = await this._storage.GetRepository<IContentRepository>().SingleAsync(id);
+                return Ok(_mapper
+                    .Map
+                    <Storage.Entities.Entities.Content, 
+                        ViewModels.ViewModels.Content>(content));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPost]
-        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
+        public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.Content content)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().CreateAsync(content);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.Content,
+                            Storage.Entities.Entities.Content>(content);
+                await this._storage.GetRepository<IContentRepository>().CreateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Content content)
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.Content content)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().UpdateAsync(content);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                   _mapper
+                       .Map
+                       <ViewModels.ViewModels.Content,
+                           Storage.Entities.Entities.Content>(content);
+                await this._storage.GetRepository<IContentRepository>().UpdateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IContentRepository>().DeleteAsync(id);
+            try
+            {
+                await this._storage.GetRepository<IContentRepository>().DeleteAsync(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
     }
 }

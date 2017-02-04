@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Abstractions.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -13,42 +14,113 @@ namespace AlexanderTsema.WebServices.Controllers
     public class ReferenceAuthorController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
-        public ReferenceAuthorController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        private readonly IMapper _mapper;
+        private readonly ILogger<ReferenceAuthorController> _log;
+
+        public ReferenceAuthorController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage,
+            IMapper mapper, ILogger<ReferenceAuthorController> log)
         {
             this._storage = storage;
+            this._mapper = mapper;
+            this._log = log;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().AllAsync();
+            try
+            {
+                var referenceAuthors = await this._storage.GetRepository<IReferenceAuthorRepository>().AllAsync();
+                return
+                    Ok(_mapper
+                        .Map
+                        <IEnumerable<Storage.Entities.Entities.ReferenceAuthor>,
+                            IEnumerable<ViewModels.ViewModels.ReferenceAuthor>>
+                            (referenceAuthors));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().SingleAsync(id);
+            try
+            {
+                var referenceAuthor = await this._storage.GetRepository<IReferenceAuthorRepository>().SingleAsync(id);
+                return Ok(_mapper
+                    .Map
+                    <Storage.Entities.Entities.ReferenceAuthor,
+                        ViewModels.ViewModels.ReferenceAuthor>(referenceAuthor));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPost]
-        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
+        public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.ReferenceAuthor referenceAuthor)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().CreateAsync(referenceAuthor);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.ReferenceAuthor,
+                            Storage.Entities.Entities.ReferenceAuthor>(referenceAuthor);
+                await this._storage.GetRepository<IReferenceAuthorRepository>().CreateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor referenceAuthor)
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.ReferenceAuthor referenceAuthor)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().UpdateAsync(referenceAuthor);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.ReferenceAuthor,
+                            Storage.Entities.Entities.ReferenceAuthor>(referenceAuthor);
+                await this._storage.GetRepository<IReferenceAuthorRepository>().UpdateAsync(entity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.IReferenceAuthorRepository>().DeleteAsync(id);
+            try
+            {
+                await this._storage.GetRepository<IReferenceAuthorRepository>().DeleteAsync(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
     }
 }

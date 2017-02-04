@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Abstractions.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -13,43 +14,113 @@ namespace AlexanderTsema.WebServices.Controllers
     public class CourseController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
+        private readonly IMapper _mapper;
+        private readonly ILogger<CourseController> _log;
 
-        public CourseController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        public CourseController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage,
+            IMapper mapper, ILogger<CourseController> log)
         {
             this._storage = storage;
+            this._mapper = mapper;
+            this._log = log;
         }
         
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Course>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().AllAsync();
+            try
+            {
+                var courses = await this._storage.GetRepository<ICourseRepository>().AllAsync();
+                return
+                    Ok(_mapper
+                        .Map
+                        <IEnumerable<Storage.Entities.Entities.Course>,
+                            IEnumerable<ViewModels.ViewModels.Course>>
+                            (courses));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
         
         [HttpGet("{id}")]
-        public async Task<AlexanderTsema.Storage.Entities.Entities.Course> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().SingleAsync(id);
+            try
+            {
+                var course = await this._storage.GetRepository<ICourseRepository>().SingleAsync(id);
+                return Ok(_mapper
+                    .Map
+                    <Storage.Entities.Entities.Course,
+                        ViewModels.ViewModels.Course>(course));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPost]
-        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Course course)
+        public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.Course course)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().CreateAsync(course);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                   _mapper
+                       .Map
+                       <ViewModels.ViewModels.Course,
+                           Storage.Entities.Entities.Course>(course);
+                await this._storage.GetRepository<ICourseRepository>().CreateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Course course)
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.Course course)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().UpdateAsync(course);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.PortfolioItem,
+                            Storage.Entities.Entities.PortfolioItem>(course);
+                await this._storage.GetRepository<ICourseRepository>().UpdateAsync(entity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ICourseRepository>().DeleteAsync(id);
+            try
+            {
+                await this._storage.GetRepository<ICourseRepository>().DeleteAsync(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
     }
 }

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AlexanderTsema.Storage.Abstractions.Repositories;
-using AlexanderTsema.Storage.Entities.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -17,9 +13,10 @@ namespace AlexanderTsema.WebServices.Controllers
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
         private readonly IMapper _mapper;
-        readonly ILogger<CertificateController> _log;
+        private readonly ILogger<CertificateController> _log;
 
-        public CertificateController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage, IMapper mapper, ILogger<CertificateController> log)
+        public CertificateController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage,
+            IMapper mapper, ILogger<CertificateController> log)
         {
             this._storage = storage;
             this._mapper = mapper;
@@ -35,8 +32,9 @@ namespace AlexanderTsema.WebServices.Controllers
                 return
                     Ok(_mapper
                         .Map
-                        <IEnumerable<Certificate>,
-                            IEnumerable<ViewModels.ViewModels.Certificate>>(certificates));
+                        <IEnumerable<Storage.Entities.Entities.Certificate>,
+                            IEnumerable<ViewModels.ViewModels.Certificate>>
+                            (certificates));
             }
             catch (Exception e)
             {
@@ -53,7 +51,7 @@ namespace AlexanderTsema.WebServices.Controllers
                 var certificate = await this._storage.GetRepository<ICertificateRepository>().SingleAsync(id);
                 return Ok(_mapper
                     .Map
-                    <Certificate,
+                    <Storage.Entities.Entities.Certificate,
                         ViewModels.ViewModels.Certificate>(certificate));
             }
             catch (Exception e)
@@ -74,7 +72,7 @@ namespace AlexanderTsema.WebServices.Controllers
                     _mapper
                         .Map
                         <ViewModels.ViewModels.Certificate,
-                            Certificate>(certificate);
+                            Storage.Entities.Entities.Certificate>(certificate);
                 await this._storage.GetRepository<ICertificateRepository>().CreateAsync(enity);
                 return Ok();
             }
@@ -96,7 +94,7 @@ namespace AlexanderTsema.WebServices.Controllers
                     _mapper
                         .Map
                         <ViewModels.ViewModels.Certificate,
-                            Certificate>(certificate);
+                            Storage.Entities.Entities.Certificate>(certificate);
                 await this._storage.GetRepository<ICertificateRepository>().UpdateAsync(entity);
                 return Ok();
             }

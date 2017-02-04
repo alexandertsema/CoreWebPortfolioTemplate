@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AlexanderTsema.Storage.Abstractions.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
 
 namespace AlexanderTsema.WebServices.Controllers
 {
@@ -13,42 +14,112 @@ namespace AlexanderTsema.WebServices.Controllers
     public class SummaryController : Controller
     {
         private readonly AlexanderTsema.Storage.Abstractions.Core.IStorage _storage;
-        public SummaryController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage)
+        private readonly IMapper _mapper;
+        readonly ILogger<SummaryController> _log;
+
+        public SummaryController(AlexanderTsema.Storage.Abstractions.Core.IStorage storage, IMapper mapper, ILogger<SummaryController> log)
         {
             this._storage = storage;
+            this._mapper = mapper;
+            this._log = log;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AlexanderTsema.Storage.Entities.Entities.Summary>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().AllAsync();
+            try
+            {
+                var summaries = await this._storage.GetRepository<ISummaryRepository>().AllAsync();
+                return
+                    Ok(_mapper
+                        .Map
+                        <IEnumerable<Storage.Entities.Entities.Summary>,
+                            IEnumerable<ViewModels.ViewModels.Summary>>
+                            (summaries));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("{id}")]
-        public async Task<AlexanderTsema.Storage.Entities.Entities.Summary> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().SingleAsync(id);
+            try
+            {
+                var sumary = await this._storage.GetRepository<ISummaryRepository>().SingleAsync(id);
+                return Ok(_mapper
+                    .Map
+                    <Storage.Entities.Entities.Summary,
+                        ViewModels.ViewModels.Summary>(sumary));
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPost]
-        public async Task Post([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
+        public async Task<IActionResult> Post([FromBody]AlexanderTsema.ViewModels.ViewModels.Summary summary)
         {
-            await  this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().CreateAsync(summary);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var enity =
+                   _mapper
+                       .Map
+                       <ViewModels.ViewModels.Summary,
+                           Storage.Entities.Entities.Summary>(summary);
+                await  this._storage.GetRepository<ISummaryRepository>().CreateAsync(enity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpPut("{id}")]
-        public async Task Put([FromBody]AlexanderTsema.Storage.Entities.Entities.Summary summary)
+        public async Task<IActionResult> Put([FromBody]AlexanderTsema.ViewModels.ViewModels.Summary summary)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().UpdateAsync(summary);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.Summary,
+                            Storage.Entities.Entities.Summary>(summary);
+                await this._storage.GetRepository<ISummaryRepository>().UpdateAsync(entity);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
 
 //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await this._storage.GetRepository<AlexanderTsema.Storage.Abstractions.Repositories.ISummaryRepository>().DeleteAsync(id);
+            try
+            {
+                await this._storage.GetRepository<ISummaryRepository>().DeleteAsync(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.ToString());
+                return StatusCode(500);
+            }
         }
     }
 }
