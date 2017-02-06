@@ -10,7 +10,7 @@ namespace AlexanderTsema.Storage.Abstractions.Core
         Task<IEnumerable<T>> AllAsync();
         Task<T> SingleAsync(int id);
         Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
+        Task<Boolean> UpdateAsync(T entity);
         Task<Boolean> DeleteAsync(int id);
     }
 }

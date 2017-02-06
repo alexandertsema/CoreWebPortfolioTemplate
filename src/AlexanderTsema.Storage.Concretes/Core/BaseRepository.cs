@@ -26,68 +26,63 @@ namespace AlexanderTsema.Storage.Concretes.Core
             if (context != null) this.DbSet = context.Set<T>();
         }
 
-        public virtual async Task<IEnumerable<T>> AllAsync()
-        {
-            return await Task.Run(() => this.DbSet.OrderBy(i => i.GetType().GetRuntimeProperty("Id").GetValue(i)).IncludeAll());
-        }
-
-        public virtual async Task<T> SingleAsync(int id)
-        {
-            return await Task.Run(() => this.DbSet.Where(x => (short)x.GetType().GetRuntimeProperty("Id").GetValue(x) == id).IncludeAll().SingleOrDefault());
-        }
-
-        public virtual async Task CreateAsync(T entity)
-        {
-            await Task.Run(() =>
-            {
-                this.DbSet.Add(entity);
-                this.StorageContext.SaveChanges();
-            });
-        }
-
-        public virtual async Task UpdateAsync(T entity)
-        {
-            await Task.Run(() =>
-            {
-                var dbEntry =
-                    this.DbSet.Where(
-                            x =>
-                                (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) ==
-                                (short) entity.GetType().GetRuntimeProperty("Id").GetValue(entity))
+        public virtual async Task<IEnumerable<T>> AllAsync() =>
+            await Task.Run(() => this.DbSet.OrderBy(i => i.GetType().GetRuntimeProperty("Id").GetValue(i)).IncludeAll());
+        
+        public virtual async Task<T> SingleAsync(int id) =>
+            await Task.Run(
+                async () =>
+                    await this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
                         .IncludeAll()
-                        .SingleOrDefault();
-                if (dbEntry == null) return;
-                foreach (var property in dbEntry.GetType().GetRuntimeProperties())
-                {
-                    var dbEntryProperty = dbEntry.GetType().GetRuntimeProperty(property.Name);
-                    var objValue = entity.GetType().GetRuntimeProperty(property.Name).GetValue(entity);
+                        .SingleOrDefaultAsync());
+  
+        public virtual async Task CreateAsync(T entity) => await Task.Run(async () =>
+        {
+            await this.DbSet.AddAsync(entity);
+            await this.StorageContext.SaveChangesAsync();
+        });
 
-                    if (property.Name == "Id") continue;
-                    if (dbEntryProperty.GetValue(dbEntry) != null && objValue != null)
-                    {
-                        if (dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode())
-                        {
-                            dbEntryProperty.SetValue(dbEntry, objValue);
-                        }
-                    }
-                    else
+        public virtual async Task<Boolean> UpdateAsync(T entity) => await Task.Run(async () =>
+        {
+            var dbEntry = await
+                this.DbSet.Where(
+                        x =>
+                            (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) ==
+                            (short) entity.GetType().GetRuntimeProperty("Id").GetValue(entity))
+                    .IncludeAll()
+                    .SingleOrDefaultAsync();
+            if (dbEntry == null) return false;
+            foreach (var property in dbEntry.GetType().GetRuntimeProperties())
+            {
+                var dbEntryProperty = dbEntry.GetType().GetRuntimeProperty(property.Name);
+                var objValue = entity.GetType().GetRuntimeProperty(property.Name).GetValue(entity);
+
+                if (property.Name == "Id") continue;
+                if (dbEntryProperty.GetValue(dbEntry) != null && objValue != null)
+                {
+                    if (dbEntryProperty.GetValue(dbEntry).GetHashCode() != objValue.GetHashCode())
                     {
                         dbEntryProperty.SetValue(dbEntry, objValue);
                     }
                 }
-                this.StorageContext.SaveChanges();
-            });
-        }
+                else
+                {
+                    dbEntryProperty.SetValue(dbEntry, objValue);
+                }
+            }
+            await this.StorageContext.SaveChangesAsync();
+            return true;
+        });
 
-        public virtual async Task<Boolean> DeleteAsync(int id) => await Task.Run(() =>
+        public virtual async Task<Boolean> DeleteAsync(int id) => await Task.Run(async () =>
         {
-            var dbEntry =
+            var dbEntry = await 
                 this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
                     .IncludeAll()
-                    .SingleOrDefault();
+                    .SingleOrDefaultAsync();
             if (dbEntry == null) return false;
             this.DbSet.Remove(dbEntry);
-            this.StorageContext.SaveChanges();
+            await this.StorageContext.SaveChangesAsync();
             return true;
         });
     }

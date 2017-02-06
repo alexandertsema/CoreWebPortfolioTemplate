@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AutoMapper;
@@ -39,8 +40,8 @@ namespace AlexanderTsema.WebServices.Controllers
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
 
@@ -57,8 +58,8 @@ namespace AlexanderTsema.WebServices.Controllers
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
 
@@ -66,29 +67,7 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.PortfolioItemCategory portfolioItemCategory)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            try
-            {
-                var enity =
-                    _mapper
-                        .Map
-                        <ViewModels.ViewModels.PortfolioItemCategory,
-                            Storage.Entities.Entities.PortfolioItemCategory>(portfolioItemCategory);
-                await this._storage.GetRepository<IPortfolioItemCategoryRepository>().CreateAsync(enity);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
-            }
-        }
-
-        //        [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.PortfolioItemCategory portfolioItemCategory)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return StatusCode((int) HttpStatusCode.BadRequest, ModelState);
             try
             {
                 var entity =
@@ -96,13 +75,36 @@ namespace AlexanderTsema.WebServices.Controllers
                         .Map
                         <ViewModels.ViewModels.PortfolioItemCategory,
                             Storage.Entities.Entities.PortfolioItemCategory>(portfolioItemCategory);
-                await this._storage.GetRepository<IPortfolioItemCategoryRepository>().UpdateAsync(entity);
-                return Ok();
+                await this._storage.GetRepository<IPortfolioItemCategoryRepository>().CreateAsync(entity);
+                return StatusCode((int)HttpStatusCode.Created, entity);
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
+            }
+        }
+
+        //        [Authorize]
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.PortfolioItemCategory portfolioItemCategory)
+        {
+            if (!ModelState.IsValid) return StatusCode((int) HttpStatusCode.BadRequest, ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.PortfolioItemCategory,
+                            Storage.Entities.Entities.PortfolioItemCategory>(portfolioItemCategory);
+                if (await this._storage.GetRepository<IPortfolioItemCategoryRepository>().UpdateAsync(entity))
+                    return StatusCode((int)HttpStatusCode.OK);
+                return StatusCode((int)HttpStatusCode.NotModified);
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
 
@@ -113,13 +115,13 @@ namespace AlexanderTsema.WebServices.Controllers
             try
             {
                 if (await this._storage.GetRepository<IPortfolioItemCategoryRepository>().DeleteAsync(id))
-                    return Ok();
-                return NotFound();
+                    return StatusCode((int)HttpStatusCode.OK);
+                return StatusCode((int) HttpStatusCode.NotFound);
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
     }

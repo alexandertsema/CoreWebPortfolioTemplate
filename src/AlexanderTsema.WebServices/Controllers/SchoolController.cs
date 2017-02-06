@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AutoMapper;
@@ -37,8 +38,8 @@ namespace AlexanderTsema.WebServices.Controllers
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
         
@@ -52,8 +53,8 @@ namespace AlexanderTsema.WebServices.Controllers
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
 
@@ -61,29 +62,7 @@ namespace AlexanderTsema.WebServices.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]ViewModels.ViewModels.School school)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            try
-            {
-                var enity =
-                    _mapper
-                        .Map
-                        <ViewModels.ViewModels.School,
-                            Storage.Entities.Entities.School>(school);
-                await this._storage.GetRepository<ISchoolRepository>().CreateAsync(enity);
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
-            }
-        }
-
-//        [Authorize]
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.School school)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid) return StatusCode((int) HttpStatusCode.BadRequest, ModelState);
             try
             {
                 var entity =
@@ -91,13 +70,36 @@ namespace AlexanderTsema.WebServices.Controllers
                         .Map
                         <ViewModels.ViewModels.School,
                             Storage.Entities.Entities.School>(school);
-                await this._storage.GetRepository<ISchoolRepository>().UpdateAsync(entity);
-                return Ok();
+                await this._storage.GetRepository<ISchoolRepository>().CreateAsync(entity);
+                return StatusCode((int)HttpStatusCode.Created, entity);
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
+            }
+        }
+
+//        [Authorize]
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]ViewModels.ViewModels.School school)
+        {
+            if (!ModelState.IsValid) return StatusCode((int) HttpStatusCode.BadRequest, ModelState);
+            try
+            {
+                var entity =
+                    _mapper
+                        .Map
+                        <ViewModels.ViewModels.School,
+                            Storage.Entities.Entities.School>(school);
+                if (await this._storage.GetRepository<ISchoolRepository>().UpdateAsync(entity))
+                    return StatusCode((int)HttpStatusCode.OK);
+                return StatusCode((int)HttpStatusCode.NotModified);
+            }
+            catch (Exception e)
+            {
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
 
@@ -108,13 +110,13 @@ namespace AlexanderTsema.WebServices.Controllers
             try
             {
                 if (await this._storage.GetRepository<ISchoolRepository>().DeleteAsync(id))
-                    return Ok();
-                return NotFound();
+                    return StatusCode((int)HttpStatusCode.OK);
+                return StatusCode((int) HttpStatusCode.NotFound);
             }
             catch (Exception e)
             {
-                _log.LogInformation(e.ToString());
-                return StatusCode(500);
+                _log.LogError(e.ToString());
+                return StatusCode((int) HttpStatusCode.InternalServerError);
             }
         }
     }
