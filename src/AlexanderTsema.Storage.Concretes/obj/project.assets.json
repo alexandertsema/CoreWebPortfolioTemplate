@@ -6484,6 +6484,7 @@
     "C:\\Users\\Alex\\.nuget\\packages\\": {}
   },
   "project": {
+    "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\Alex\\Documents\\Visual Studio 2017\\Projects\\PortfolioTemplate\\src\\AlexanderTsema.Storage.Concretes\\AlexanderTsema.Storage.Concretes.csproj",
       "projectName": "AlexanderTsema.Storage.Concretes",
