@@ -15,12 +15,14 @@ namespace AlexanderTsema.ViewModels.ViewModels
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(100, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
-        public String Image { get; set; }
+        public String ImagePath { get; set; }
 
         [MaxLength(100, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
         public String Link { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
-        public virtual PortfolioItemCategory Category { get; set; }
+        public Int16 PortfolioItemCategoryId { get; set; }
+
+        public virtual PortfolioItemCategory PortfolioItemCategory { get; set; }
     }
 }

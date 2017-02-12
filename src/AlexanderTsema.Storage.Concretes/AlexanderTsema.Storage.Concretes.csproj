@@ -11,6 +11,19 @@
     <None Remove="obj\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Repositories\ContentRepository.cs" />
+    <Compile Remove="Repositories\CourseRepository.cs" />
+    <Compile Remove="Repositories\PortfolioItemCategoryRepository.cs" />
+    <Compile Remove="Repositories\PortfolioItemRepository.cs" />
+    <Compile Remove="Repositories\ReferenceAuthorRepository.cs" />
+    <Compile Remove="Repositories\ReferenceRepository.cs" />
+    <Compile Remove="Repositories\ResumeRepository.cs" />
+    <Compile Remove="Repositories\SchoolRepository.cs" />
+    <Compile Remove="Repositories\SkillCategoryRepository.cs" />
+    <Compile Remove="Repositories\SkillRepository.cs" />
+    <Compile Remove="Repositories\SummaryRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.0" />

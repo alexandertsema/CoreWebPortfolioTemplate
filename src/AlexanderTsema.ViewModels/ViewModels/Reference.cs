@@ -12,7 +12,7 @@ namespace AlexanderTsema.ViewModels.ViewModels
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(100, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
-        public String Pdf { get; set; }
+        public String PdfPath { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         public virtual ReferenceAuthor ReferenceAuthor { get; set; }

@@ -45,7 +45,7 @@ namespace AlexanderTsema.WebServices.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(short id)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace AlexanderTsema.WebServices.Controllers
 
         //        [Authorize]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(short id)
         {
             try
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AlexanderTsema.ViewModels.ViewModels
@@ -10,7 +11,7 @@ namespace AlexanderTsema.ViewModels.ViewModels
         public String Name { get; set; }
 
         [MaxLength(50, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
-        public String Image { get; set; }
+        public String ImagePath { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
@@ -23,6 +24,6 @@ namespace AlexanderTsema.ViewModels.ViewModels
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
         public String Position { get; set; }
-        //public virtual IEnumerable<Reference> References { get; set; }
+        public virtual IEnumerable<Reference> References { get; set; }
     }
 }

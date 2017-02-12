@@ -3,6 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Logs\**" />
@@ -11,14 +12,33 @@
     <None Remove="Logs\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Controllers\ContentController.cs" />
+    <Compile Remove="Controllers\CourseController.cs" />
+    <Compile Remove="Controllers\FileController.cs" />
+    <Compile Remove="Controllers\PortfolioItemCategoryController.cs" />
+    <Compile Remove="Controllers\PortfolioItemController.cs" />
+    <Compile Remove="Controllers\ReferenceAuthorController.cs" />
+    <Compile Remove="Controllers\ReferenceController.cs" />
+    <Compile Remove="Controllers\ResumeController.cs" />
+    <Compile Remove="Controllers\SchoolController.cs" />
+    <Compile Remove="Controllers\SkillCategoryController.cs" />
+    <Compile Remove="Controllers\SkillController.cs" />
+    <Compile Remove="Controllers\SummaryController.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.1.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.0" />

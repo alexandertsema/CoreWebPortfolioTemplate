@@ -13,20 +13,20 @@ namespace AlexanderTsema.Storage.Concretes.Core
             this.StorageContext = new StorageContext(@"Data Source=ALEXANDER-DESKT\SQLEXPRESS;Initial Catalog=AlexanderTsema;Trusted_Connection=True;"); //todo: move to appsettings
         }
 
-        public T GetRepository<T>() where T : IRepository
+        public TEntity GetRepository<TEntity>() where TEntity : IRepository
         {
             foreach (var type in this.GetType().GetTypeInfo().Assembly.ExportedTypes)
             {
-                if (typeof(T).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()) && type.GetTypeInfo().IsClass)
+                if (typeof(TEntity).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()) && type.GetTypeInfo().IsClass)
                 {
-                    T repository = (T)Activator.CreateInstance(type);
+                    TEntity repository = (TEntity)Activator.CreateInstance(type);
 
                     repository.SetStorageContext(this.StorageContext);
                     return repository;
                 }
             }
 
-            return default(T);
+            return default(TEntity);
         }
 
         public void Save()

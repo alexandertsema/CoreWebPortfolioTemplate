@@ -34,9 +34,9 @@ namespace AlexanderTsema.ViewModels.ViewModels
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
         [MaxLength(100, ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Length_Short")]
-        public String Image { get; set; }
+        public String ImagePath { get; set; }
 
 
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual IEnumerable<Course> Courses { get; set; }
     }
 }

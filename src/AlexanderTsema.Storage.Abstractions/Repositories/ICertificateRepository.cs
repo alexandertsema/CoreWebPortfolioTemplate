@@ -1,7 +1,8 @@
-﻿using AlexanderTsema.Storage.Abstractions.Core;
+﻿using System;
+using AlexanderTsema.Storage.Abstractions.Core;
 using AlexanderTsema.Storage.Entities.Entities;
 
 namespace AlexanderTsema.Storage.Abstractions.Repositories
 {
-    public interface ICertificateRepository : IRepository, IBaseRepository<Certificate> { }
+    public interface ICertificateRepository : IRepository, IBaseRepository<Certificate, Int16> { }
 }

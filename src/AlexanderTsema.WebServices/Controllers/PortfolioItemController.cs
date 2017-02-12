@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AlexanderTsema.Storage.Abstractions.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -31,7 +32,9 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             try
             {
+                //HttpContext.User.Identity.IsAuthenticated
                 var portfolioItem = await this._storage.GetRepository<IPortfolioItemRepository>().AllAsync();
+//                return Ok(portfolioItem);
                 return
                     Ok(_mapper
                         .Map

@@ -8,6 +8,7 @@ namespace AlexanderTsema.Storage.Entities.Entities
     {
         public String Name { get; set; }
         public Int16 Priority { get; set; }
-        public SkillCategory SkillCategory { get; set; }
+        public Int16 SkillCategoryId { get; set; }
+        public virtual SkillCategory SkillCategory { get; set; }
     }
 }

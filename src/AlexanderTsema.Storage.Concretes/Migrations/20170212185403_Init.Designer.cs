@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using AlexanderTsema.Storage.Concretes.Core;
+using AlexanderTsema.Storage.Entities.Enums;
 
 namespace AlexanderTsema.Storage.Concretes.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    [Migration("20170128023030_Reference_ReferenceAuthot_HotFix2")]
-    partial class Reference_ReferenceAuthot_HotFix2
+    [Migration("20170212185403_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,13 +25,17 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Authority");
 
-                    b.Property<string>("Image");
+                    b.Property<short>("FileId");
 
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("RecieveDate");
 
+                    b.Property<DateTime>("Timestamp");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FileId");
 
                     b.ToTable("Certificate");
                 });
@@ -50,6 +55,8 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("TestimonialsTitle");
 
+                    b.Property<DateTime>("Timestamp");
+
                     b.Property<string>("WorkTitle");
 
                     b.HasKey("Id");
@@ -64,7 +71,9 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<short?>("SchoolId");
+                    b.Property<short>("SchoolId");
+
+                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -73,24 +82,44 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                     b.ToTable("Course");
                 });
 
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.File", b =>
+                {
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FilePath");
+
+                    b.Property<int>("FileType");
+
+                    b.Property<string>("Name");
+
+                    b.Property<long>("Size");
+
+                    b.Property<DateTime>("Timestamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("File");
+                });
+
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.PortfolioItem", b =>
                 {
                     b.Property<short>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<short?>("CategoryId");
-
                     b.Property<string>("Description");
-
-                    b.Property<string>("Image");
 
                     b.Property<string>("Link");
 
                     b.Property<string>("Name");
 
+                    b.Property<short>("PortfolioItemCategoryId");
+
+                    b.Property<DateTime>("Timestamp");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("PortfolioItemCategoryId");
 
                     b.ToTable("PortfolioItem");
                 });
@@ -101,6 +130,8 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -114,9 +145,11 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Pdf");
+                    b.Property<string>("PdfPath");
 
-                    b.Property<short?>("ReferenceAuthorId");
+                    b.Property<short>("ReferenceAuthorId");
+
+                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -134,15 +167,31 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("CompanyName");
 
-                    b.Property<string>("Image");
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("Name");
 
                     b.Property<string>("Position");
 
+                    b.Property<DateTime>("Timestamp");
+
                     b.HasKey("Id");
 
                     b.ToTable("ReferenceAuthor");
+                });
+
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Resume", b =>
+                {
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PdfPath");
+
+                    b.Property<DateTime>("Timestamp");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Resume");
                 });
 
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.School", b =>
@@ -160,11 +209,13 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("GraduationWork");
 
-                    b.Property<string>("Image");
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("Name");
 
                     b.Property<DateTime>("StartDate");
+
+                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -180,7 +231,9 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<short>("Priority");
 
-                    b.Property<short?>("SkillCategoryId");
+                    b.Property<short>("SkillCategoryId");
+
+                    b.Property<DateTime>("Timestamp");
 
                     b.HasKey("Id");
 
@@ -196,6 +249,8 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<DateTime>("Timestamp");
+
                     b.HasKey("Id");
 
                     b.ToTable("SkillCategory");
@@ -208,37 +263,53 @@ namespace AlexanderTsema.Storage.Concretes.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("ProfileImagePath");
+
+                    b.Property<DateTime>("Timestamp");
+
                     b.HasKey("Id");
 
                     b.ToTable("Summary");
                 });
 
+            modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Certificate", b =>
+                {
+                    b.HasOne("AlexanderTsema.Storage.Entities.Entities.File", "Image")
+                        .WithMany()
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Course", b =>
                 {
-                    b.HasOne("AlexanderTsema.Storage.Entities.Entities.School")
+                    b.HasOne("AlexanderTsema.Storage.Entities.Entities.School", "School")
                         .WithMany("Courses")
-                        .HasForeignKey("SchoolId");
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.PortfolioItem", b =>
                 {
-                    b.HasOne("AlexanderTsema.Storage.Entities.Entities.PortfolioItemCategory", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
+                    b.HasOne("AlexanderTsema.Storage.Entities.Entities.PortfolioItemCategory", "PortfolioItemCategory")
+                        .WithMany("PortfolioItems")
+                        .HasForeignKey("PortfolioItemCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Reference", b =>
                 {
                     b.HasOne("AlexanderTsema.Storage.Entities.Entities.ReferenceAuthor", "ReferenceAuthor")
-                        .WithMany()
-                        .HasForeignKey("ReferenceAuthorId");
+                        .WithMany("References")
+                        .HasForeignKey("ReferenceAuthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("AlexanderTsema.Storage.Entities.Entities.Skill", b =>
                 {
                     b.HasOne("AlexanderTsema.Storage.Entities.Entities.SkillCategory", "SkillCategory")
                         .WithMany("Skills")
-                        .HasForeignKey("SkillCategoryId");
+                        .HasForeignKey("SkillCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

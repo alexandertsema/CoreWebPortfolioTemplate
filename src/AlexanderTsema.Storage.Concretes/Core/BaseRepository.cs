@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using AlexanderTsema.Storage.Concretes.Helpers;
+using AlexanderTsema.Storage.Entities.Entities;
 
 namespace AlexanderTsema.Storage.Concretes.Core
 {
@@ -13,36 +14,42 @@ namespace AlexanderTsema.Storage.Concretes.Core
     /// Basic CRUD functionality
     /// Waiting for Lazy Load to be added to Core. Now IncludeAll extension is used to reproduce lazy load.
     /// </summary>
-    /// <typeparam name="T">Entity</typeparam>
-    public abstract class BaseRepository<T> where T : class
+    /// <typeparam name="TEntity">TEntity</typeparam>
+    /// <typeparam name="TKey">Id PK</typeparam>
+    public abstract class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey>
+        where TEntity : BaseEntity
+        where TKey : struct
     {
         protected StorageContext StorageContext;
-        protected DbSet<T> DbSet;
+        protected DbSet<TEntity> DbSet;
 
         public void SetStorageContext(IStorageContext storageContext)
         {
             this.StorageContext = storageContext as StorageContext;
             var context = this.StorageContext;
-            if (context != null) this.DbSet = context.Set<T>();
+            if (context != null) this.DbSet = context.Set<TEntity>();
         }
 
-        public virtual async Task<IEnumerable<T>> AllAsync() =>
+        public virtual async Task<IQueryable<TEntity>> AllAsync() =>
             await Task.Run(() => this.DbSet.OrderBy(i => i.GetType().GetRuntimeProperty("Id").GetValue(i)).IncludeAll());
-        
-        public virtual async Task<T> SingleAsync(int id) =>
-            await Task.Run(
-                async () =>
-                    await this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
-                        .IncludeAll()
-                        .SingleOrDefaultAsync());
-  
-        public virtual async Task CreateAsync(T entity) => await Task.Run(async () =>
+
+        public virtual async Task<TEntity> FindSingleAsync(TKey id) => await this.DbSet.FindAsync(id);
+
+        public virtual async Task<TEntity> SingleAsync(TKey id)
+        {
+            var result = await this.DbSet.Where(x => x.Id.Equals(id))
+                .IncludeAll()
+                .SingleOrDefaultAsync();
+            return result;
+        }
+
+        public virtual async Task CreateAsync(TEntity entity)
         {
             await this.DbSet.AddAsync(entity);
             await this.StorageContext.SaveChangesAsync();
-        });
+        }
 
-        public virtual async Task<Boolean> UpdateAsync(T entity) => await Task.Run(async () =>
+        public virtual async Task<Boolean> UpdateAsync(TEntity entity) => await Task.Run(async () =>
         {
             var dbEntry = await
                 this.DbSet.Where(
@@ -74,10 +81,10 @@ namespace AlexanderTsema.Storage.Concretes.Core
             return true;
         });
 
-        public virtual async Task<Boolean> DeleteAsync(int id) => await Task.Run(async () =>
+        public virtual async Task<Boolean> DeleteAsync(TKey id) => await Task.Run(async () =>
         {
             var dbEntry = await 
-                this.DbSet.Where(x => (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) == id)
+                this.DbSet.Where(x => x.Id.Equals(id))
                     .IncludeAll()
                     .SingleOrDefaultAsync();
             if (dbEntry == null) return false;
@@ -85,5 +92,20 @@ namespace AlexanderTsema.Storage.Concretes.Core
             await this.StorageContext.SaveChangesAsync();
             return true;
         });
+
+        public Task<IQueryable<TEntity>> FindAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity> FindAsync(TKey id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteAllAsync(TKey id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

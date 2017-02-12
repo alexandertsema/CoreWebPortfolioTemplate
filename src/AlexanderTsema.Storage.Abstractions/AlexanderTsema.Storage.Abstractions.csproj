@@ -11,6 +11,19 @@
     <None Remove="obj\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Repositories\IContentRepository.cs" />
+    <Compile Remove="Repositories\ICourseRepository.cs" />
+    <Compile Remove="Repositories\IPortfolioItemRepository.cs" />
+    <Compile Remove="Repositories\IPortfolioItemTypeRepository.cs" />
+    <Compile Remove="Repositories\IReferenceAuthorRepository.cs" />
+    <Compile Remove="Repositories\IReferenceRepository.cs" />
+    <Compile Remove="Repositories\IResumeRepository.cs" />
+    <Compile Remove="Repositories\ISchoolRepository.cs" />
+    <Compile Remove="Repositories\ISkillCategoryRepository.cs" />
+    <Compile Remove="Repositories\ISkillRepository.cs" />
+    <Compile Remove="Repositories\ISummaryRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="NETStandard.Library" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
