@@ -15,6 +15,7 @@ namespace AlexanderTsema.WebServices
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls("http://localhost:5000", "http://localhost:5001")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();

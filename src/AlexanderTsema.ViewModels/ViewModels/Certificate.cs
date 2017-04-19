@@ -17,6 +17,8 @@ namespace AlexanderTsema.ViewModels.ViewModels
         public DateTime RecieveDate { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationErrors), ErrorMessageResourceName = "Required")]
-        public String ImagePath { get; set; }
+        public Int16 FileId { get; set; }
+
+        public File Image { get; set; }
     }
 }

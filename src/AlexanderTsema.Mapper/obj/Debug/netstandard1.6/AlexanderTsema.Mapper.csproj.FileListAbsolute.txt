@@ -1,0 +1,11 @@
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.Mapper.deps.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.Mapper.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.Mapper.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.ViewModels.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\bin\Debug\netstandard1.6\AlexanderTsema.ViewModels.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\obj\Debug\netstandard1.6\AlexanderTsema.Mapper.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\obj\Debug\netstandard1.6\AlexanderTsema.Mapper.AssemblyInfo.cs
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\obj\Debug\netstandard1.6\AlexanderTsema.Mapper.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Mapper\obj\Debug\netstandard1.6\AlexanderTsema.Mapper.pdb

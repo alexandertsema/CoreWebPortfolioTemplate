@@ -123,6 +123,9 @@
   <data name="Length_Short" xml:space="preserve">
     <value>The string is more than 50 characters length</value>
   </data>
+  <data name="Max_Size" xml:space="preserve">
+    <value>The file size should be less than 2 MB</value>
+  </data>
   <data name="Range_Gpa" xml:space="preserve">
     <value>The GPA should be between 0.0 and 4.0</value>
   </data>

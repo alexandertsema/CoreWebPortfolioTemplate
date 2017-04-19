@@ -1,0 +1,9 @@
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.deps.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\bin\Debug\netstandard1.6\AlexanderTsema.Storage.Entities.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\obj\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\obj\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.AssemblyInfo.cs
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\obj\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.Storage.Abstractions\obj\Debug\netstandard1.6\AlexanderTsema.Storage.Abstractions.pdb

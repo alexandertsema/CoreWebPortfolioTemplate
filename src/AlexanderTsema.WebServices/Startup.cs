@@ -21,7 +21,7 @@ namespace AlexanderTsema.WebServices
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -32,13 +32,20 @@ namespace AlexanderTsema.WebServices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Automapper
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+
             // Add framework services.
-            //services.AddMvc();
             services.AddMvc().AddJsonOptions(options => { // fix loop references for EF
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
-            services.AddAutoMapper(typeof(MappingProfile));
 
             // Add DI
             services.AddScoped(typeof(AlexanderTsema.Storage.Abstractions.Core.IStorage),
@@ -50,8 +57,7 @@ namespace AlexanderTsema.WebServices
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             #if DEBUG
-
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            
             loggerFactory.AddDebug();
 
             #endif

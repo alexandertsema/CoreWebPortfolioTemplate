@@ -1,0 +1,10 @@
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\bin\Debug\netstandard1.6\AlexanderTsema.ViewModels.deps.json
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\bin\Debug\netstandard1.6\AlexanderTsema.ViewModels.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\bin\Debug\netstandard1.6\AlexanderTsema.ViewModels.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.Properties.Resources.resources
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.ValidationErrors.resources
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.AssemblyInfo.cs
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.dll
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.pdb
+C:\Users\Alex\Documents\Visual Studio 2017\Projects\PortfolioTemplate\src\AlexanderTsema.ViewModels\obj\Debug\netstandard1.6\AlexanderTsema.ViewModels.csprojResolveAssemblyReference.cache

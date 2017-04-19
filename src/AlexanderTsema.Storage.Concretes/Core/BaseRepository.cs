@@ -12,7 +12,7 @@ namespace AlexanderTsema.Storage.Concretes.Core
 {
     /// <summary>
     /// Basic CRUD functionality
-    /// Waiting for Lazy Load to be added to Core. Now IncludeAll extension is used to reproduce lazy load.
+    /// Waiting for Lazy Load to be added to Core. Now IncludeAll extension is used to reproduce lazy load with eager load of each virtual property.
     /// </summary>
     /// <typeparam name="TEntity">TEntity</typeparam>
     /// <typeparam name="TKey">Id PK</typeparam>
@@ -30,29 +30,41 @@ namespace AlexanderTsema.Storage.Concretes.Core
             if (context != null) this.DbSet = context.Set<TEntity>();
         }
 
-        public virtual async Task<IQueryable<TEntity>> AllAsync() =>
-            await Task.Run(() => this.DbSet.OrderBy(i => i.GetType().GetRuntimeProperty("Id").GetValue(i)).IncludeAll());
+        public virtual IQueryable<TEntity> All() => DbSet;
 
-        public virtual async Task<TEntity> FindSingleAsync(TKey id) => await this.DbSet.FindAsync(id);
 
-        public virtual async Task<TEntity> SingleAsync(TKey id)
-        {
-            var result = await this.DbSet.Where(x => x.Id.Equals(id))
+        public async Task<IQueryable<TEntity>> AllEagerAsync() => 
+            await Task.Run(() => DbSet.IncludeAll());
+
+        public virtual async Task<TEntity> SingleAsync(TKey id) => 
+            await DbSet.FindAsync(id);
+
+        public virtual async Task<TEntity> SingleEagerAsync(TKey id) =>
+            await DbSet.Where(x => x.Id.Equals(id))
                 .IncludeAll()
                 .SingleOrDefaultAsync();
-            return result;
-        }
 
         public virtual async Task CreateAsync(TEntity entity)
         {
-            await this.DbSet.AddAsync(entity);
-            await this.StorageContext.SaveChangesAsync();
+            await DbSet.AddAsync(entity);
+            await StorageContext.SaveChangesAsync();
         }
 
-        public virtual async Task<Boolean> UpdateAsync(TEntity entity) => await Task.Run(async () =>
+        public virtual async Task<Boolean> UpdateAsync(TEntity entity)
+        {
+            var dbEntry = await DbSet.FindAsync(entity.Id);
+            if (dbEntry == null) return false;
+            await Task.Run(() => {
+                StorageContext.Entry(dbEntry).State = EntityState.Modified;
+            });
+            await StorageContext.SaveChangesAsync();
+            return true;
+        }
+
+        public virtual async Task<Boolean> UpdateEagerAsync(TEntity entity) => await Task.Run(async () => //todo: get rid of reflections
         {
             var dbEntry = await
-                this.DbSet.Where(
+                DbSet.Where(
                         x =>
                             (short) x.GetType().GetRuntimeProperty("Id").GetValue(x) ==
                             (short) entity.GetType().GetRuntimeProperty("Id").GetValue(entity))
@@ -77,35 +89,35 @@ namespace AlexanderTsema.Storage.Concretes.Core
                     dbEntryProperty.SetValue(dbEntry, objValue);
                 }
             }
-            await this.StorageContext.SaveChangesAsync();
+            await StorageContext.SaveChangesAsync();
             return true;
         });
-
-        public virtual async Task<Boolean> DeleteAsync(TKey id) => await Task.Run(async () =>
+        
+        public virtual async Task<Boolean> DeleteAsync(TKey id)
         {
-            var dbEntry = await 
-                this.DbSet.Where(x => x.Id.Equals(id))
+            var dbEntry = await DbSet.FindAsync(id);
+            if (dbEntry == null) return false;
+            await Task.Run(() =>
+            {
+                DbSet.Remove(dbEntry);
+            });
+            await StorageContext.SaveChangesAsync();
+            return true;
+        }
+        
+        public virtual async Task<bool> DeleteEagerAsync(TKey id)
+        {
+            var dbEntry = await
+                DbSet.Where(x => x.Id.Equals(id))
                     .IncludeAll()
                     .SingleOrDefaultAsync();
             if (dbEntry == null) return false;
-            this.DbSet.Remove(dbEntry);
-            await this.StorageContext.SaveChangesAsync();
+            await Task.Run(() =>
+            {
+                DbSet.Remove(dbEntry);
+            });
+            await StorageContext.SaveChangesAsync();
             return true;
-        });
-
-        public Task<IQueryable<TEntity>> FindAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<TEntity> FindAsync(TKey id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteAllAsync(TKey id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

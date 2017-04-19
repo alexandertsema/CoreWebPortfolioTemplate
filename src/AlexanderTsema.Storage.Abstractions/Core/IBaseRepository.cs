@@ -8,13 +8,14 @@ namespace AlexanderTsema.Storage.Abstractions.Core
 {
     public interface IBaseRepository<TEntity, in TKey>
     {
-        Task<IQueryable<TEntity>> AllAsync();
-        Task<IQueryable<TEntity>> FindAllAsync();
+        IQueryable<TEntity> All();
+        Task<IQueryable<TEntity>> AllEagerAsync();
         Task<TEntity> SingleAsync(TKey id);
-        Task<TEntity> FindSingleAsync(TKey id);
+        Task<TEntity> SingleEagerAsync(TKey id);
         Task CreateAsync(TEntity entity);
         Task<Boolean> UpdateAsync(TEntity entity);
+        Task<Boolean> UpdateEagerAsync(TEntity entity);
         Task<Boolean> DeleteAsync(TKey id);
-        Task<Boolean> DeleteAllAsync(TKey id);
+        Task<Boolean> DeleteEagerAsync(TKey id);
     }
 }

@@ -80,6 +80,15 @@ namespace AlexanderTsema.ViewModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The file size should be less than 2 MB.
+        /// </summary>
+        internal static string Max_Size {
+            get {
+                return ResourceManager.GetString("Max_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The GPA should be between 0.0 and 4.0.
         /// </summary>
         internal static string Range_Gpa {

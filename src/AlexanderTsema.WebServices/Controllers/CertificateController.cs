@@ -29,7 +29,7 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             try
             {
-                var certificates = await this._storage.GetRepository<ICertificateRepository>().AllAsync();
+                var certificates = await this._storage.GetRepository<ICertificateRepository>().AllEagerAsync();
                 return
                     Ok(_mapper
                         .Map
@@ -49,7 +49,7 @@ namespace AlexanderTsema.WebServices.Controllers
         {
             try
             {
-                var certificate = await this._storage.GetRepository<ICertificateRepository>().SingleAsync(id);
+                var certificate = await this._storage.GetRepository<ICertificateRepository>().SingleEagerAsync(id);
                 return Ok(_mapper
                     .Map
                     <Storage.Entities.Entities.Certificate,
